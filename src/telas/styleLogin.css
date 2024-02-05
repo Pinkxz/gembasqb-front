@@ -83,6 +83,10 @@ body {
     color: rgba(44, 7, 253, 0.979)
   }
   
+
+
+
+/*Erros de cadastro*/
 .error-message {
   color: #ff0000; /* Cor vermelha para as mensagens de erro */
   font-size: 14px;

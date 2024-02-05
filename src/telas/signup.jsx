@@ -49,5 +49,28 @@ function validateForm() {
   
     // Outras verificações ou envio do formulário
     document.getElementById('registrationForm').submit();
-  }
+}
+
+
+function formatPhoneNumber(input) {
+    // Remove todos os caracteres não numéricos do número
+    var phoneNumber = input.value.replace(/\D/g, '');
   
+    // Formatação do número de telefone
+    var formattedPhoneNumber = '';
+  
+    if (phoneNumber.length >= 2) {
+      formattedPhoneNumber += '(' + phoneNumber.substring(0, 2) + ')';
+    }
+  
+    if (phoneNumber.length > 2 && phoneNumber.length <= 10) {
+      formattedPhoneNumber += ' ' + phoneNumber.substring(2, 7);
+    } else if (phoneNumber.length > 10) {
+      formattedPhoneNumber += ' ' + phoneNumber.substring(2, 3) + ' ' +
+                             phoneNumber.substring(3, 7) + '-' +
+                             phoneNumber.substring(7);
+    }
+  
+    // Atualiza o valor do campo de entrada com o número formatado
+    input.value = formattedPhoneNumber;
+}
