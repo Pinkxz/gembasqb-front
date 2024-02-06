@@ -1,56 +1,70 @@
 // signup.js
 
+//verificações de cadastro
 function validateForm() {
-    var name = document.getElementById('name').value;
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-    var confirmPassword = document.getElementById('confirm-password').value;
-    var number = document.getElementById('number').value;
-  
-    // Verificação de nome
-    if (!name.trim()) {
+  var name = document.getElementById('name').value;
+  var email = document.getElementById('email').value;
+  var password = document.getElementById('password').value;
+  var confirmPassword = document.getElementById('confirm-password').value;
+  var number = document.getElementById('number').value;
+
+  // Verificação de nome
+  if (!name.trim()) {
       document.getElementById('nameError').innerHTML = "Por favor, informe seu nome";
+      mostrarPopup("Por favor, informe seu nome"); // Chamando a função mostrarPopup quando há erro no nome
       return;
-    } else {
+  } else {
       document.getElementById('nameError').innerHTML = "";
-    }
-  
-    // Verificação de e-mail
-    var emailError = document.getElementById('emailError');
-    emailError.innerHTML = "";
-    if (!email.includes('@') || email.split('@')[0].length === 0) {
+  }
+
+  // Verificação de e-mail
+  var emailError = document.getElementById('emailError');
+  emailError.innerHTML = "";
+  if (!email.includes('@') || email.split('@')[0].length === 0) {
       emailError.innerHTML = "Email inválido";
+      mostrarPopup("E-Mail inválido"); // Chamando a função mostrarPopup quando há erro no email
       return;
-    }
-  
-    // Verificação de senha
-    var passwordError = document.getElementById('passwordError');
-    passwordError.innerHTML = "";
-    if (password.length < 8 || !password.match(/(?=.*[A-Z])(?=.*\d)/)) {
+  }
+
+  // Verificação de senha
+  var passwordError = document.getElementById('passwordError');
+  passwordError.innerHTML = "";
+  if (password.length < 8 || !password.match(/(?=.*[A-Z])(?=.*\d)/)) {
       passwordError.innerHTML = "A senha deve conter no mínimo 8 caracteres, 1 letra maiúscula e 1 número";
+      mostrarPopup("A senha deve conter no mínimo 8 caracteres, 1 letra maiúscula e 1 número"); // Chamando a função mostrarPopup quando há erro na senha
       return;
-    }
-  
-    // Verificação de confirmação de senha
-    var confirmError = document.getElementById('confirmError');
-    confirmError.innerHTML = "";    
-    if (password !== confirmPassword) {
+  }
+
+  // Verificação de confirmação de senha
+  var confirmError = document.getElementById('confirmError');
+  confirmError.innerHTML = "";
+  if (password !== confirmPassword) {
       confirmError.innerHTML = "As senhas não correspondem";
+      mostrarPopup("As senhas não correspondem"); // Chamando a função mostrarPopup quando há erro na confirmação de senha
       return;
-    }
-  
-    // Verificação de número
-    if (!number.trim()) {
+  }
+
+  // Verificação de número
+  if (!number.trim()) {
       document.getElementById('numberError').innerHTML = "Por favor, informe seu número de telefone";
+      mostrarPopup("Por favor, informe seu número"); // Chamando a função mostrarPopup quando há erro no número
       return;
-    } else {
+  } else {
       document.getElementById('numberError').innerHTML = "";
-    }
-  
-    // Outras verificações ou envio do formulário
-    document.getElementById('registrationForm').submit();
+  }
+
+  // Outras verificações ou envio do formulário
+  document.getElementById('registrationForm').submit();
 }
 
+function mostrarPopup(mensagem) {
+  document.getElementById('error-popup-message').textContent = mensagem;
+  document.getElementById('error-popup').style.display = 'block';
+}
+
+function fecharPopup() {
+  document.getElementById('error-popup').style.display = 'none';
+}
 
 function formatPhoneNumber(input) {
     // Remove todos os caracteres não numéricos do número

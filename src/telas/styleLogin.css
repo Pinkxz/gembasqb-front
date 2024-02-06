@@ -1,4 +1,4 @@
-body {
+  body {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -7,18 +7,18 @@ body {
     background-color: #030303; /* Cor de fundo opcional */
     font-family: 'Arial', sans-serif; /* Altere para a fonte desejada */
   }
-  
+
   /*Logo do login*/
   .logo-container {
     margin-bottom: 10px;
   }
-  
+
   .logo-container img {
     max-width: 100%;
     height: auto;
   }
-  
-  
+
+
   /*Container do login*/
   .form-container {
     background-color: #ffffff;
@@ -26,18 +26,18 @@ body {
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(207, 0, 248, 0.973);
   }
-  
-  
+
+
   .form-group {
     margin-bottom: 15px;
     width: auto;
   }
-  
+
   .form-group label {
     display: block;
     margin-bottom: 5px;
   }
-  
+
   .form-group input {
     width: 100%;
     padding: 8px;
@@ -46,12 +46,12 @@ body {
     border-radius: 10px;
     transition: border-color 0.5s;
   }
-  
+
   .form-group input:focus,
   .form-group input:hover {
     border-color: purple; /* Altera a cor da borda quando o campo está em foco ou hover */
   }
-  
+
   /*Botao de Entrar*/
   .form-group button {
     background-color: #9810f3;
@@ -62,44 +62,69 @@ body {
     cursor: pointer;
     width: 100%;
   }
-  
+
   .form-group button:hover {
     background-color: #7a0cc9;
   }
-  
+
   /*Novo user + Esqueceu*/
   .form-options {
     margin-top: 10px;
     text-align: center;
   }
-  
+
   .form-options a {
     text-decoration: none;
     color: #007bff;
   }
-  
+
   .form-options a:hover {
     text-decoration: underline;
     color: rgba(44, 7, 253, 0.979)
   }
-  
 
 
+  /*Pop-ups*/
+  .popup-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+  z-index: 9999; /* Certifique-se de que o popup esteja na frente de outros elementos */
+  }
 
-/*Erros de cadastro*/
-.error-message {
-  color: #ff0000; /* Cor vermelha para as mensagens de erro */
-  font-size: 14px;
-  margin-top: 5px;
-}
-  
-/* Adicione esta regra para a div de mensagens de erro */
-.error-container {
-  text-align: center;
-  margin-top: 10px;
-}
+  .popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra */
+  }
 
-.error-container .error-message {
-  display: block;
-  text-align: left; /* Alinhamento à esquerda */
-}
+  .popup h2 {
+  margin-bottom: 10px;
+  color: #ff0000; /* Cor do título do popup */
+  }
+
+  .popup p {
+  margin-bottom: 15px;
+  }
+
+  .popup button {
+  background-color: #9810f3;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  }
+
+  .popup button:hover {
+  background-color: #7a0cc9;
+  }
