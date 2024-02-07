@@ -89,6 +89,30 @@ header {
     margin: 5px;
 }
 
+
+.profile-options {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.profile-options a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+
+.profile-options a:hover {
+    text-decoration: underline;
+}
+
+
+
 /* Estilos para pop-ups (opcional) */
 .popup-container {
     display: none;
@@ -132,25 +156,4 @@ header {
 
 .popup button:hover {
     background-color: #7a0cc9;
-}
-
-.profile-options {
-    display: none;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    background-color: #333;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.profile-options a {
-    display: block;
-    color: #fff;
-    text-decoration: none;
-    margin-bottom: 5px;
-}
-
-.profile-options a:hover {
-    text-decoration: underline;
 }
