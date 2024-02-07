@@ -9,20 +9,43 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="/index.js"></script>
 </head>
-<body>
+<body id="inicio">
     <header>
         <div class="logo">
-            <img src="src/assets/gemba-logo.png" alt="Logo da Empresa"> 
+            <a href="#inicio"><img src="src/assets/gemba-logo.png" alt="Logo da Empresa"></a>
         </div>
-      <div class="user-options">
-        <a class="button" href="src/telas/login.html">Login</a>
-        <a class="button" href="src/telas/signup.html">Cadastrar</a>
-      </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#vantagens">Vantagens</a></li>
+                <li><a href="#sobre-nos">Sobre Nós</a></li>
+                <li><a href="#secao-1">Nome Opcional 1</a></li>
+                <li><a href="#secao-2">Nome Opcional 2</a></li>
+            </ul>
+        </nav>
+        <div class="user-options">
+            <a class="button" href="src/telas/login.html">Login</a>
+            <a class="button" href="src/telas/signup.html">Cadastrar</a>
+        </div>
     </header>
     
-    <section class="about-us">
+    <section id="vantagens" class="secoes">
+        <h2>Objetividade.</h2>
+        <p>O Aplicativo digital que reduz suas despesas operacionais e aumenta suas vendas.</p>
+    </section>
+    
+    <section id="sobre-nos" class="secoes">
         <h2>Sobre Nós</h2>
         <p>Nosso objetivo é facilitar sua vida na empresa.</p>
+    </section>
+    
+    <section id="secao-1" class="secoes">
+        <h2>Seção 1</h2>
+        <p>Conteúdo da Seção 1.</p>
+    </section>
+    
+    <section id="secao-2" class="secoes">
+        <h2>Seção 2</h2>
+        <p>Conteúdo da Seção 2.</p>
     </section>
     
     <footer>
