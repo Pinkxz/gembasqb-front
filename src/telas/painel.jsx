@@ -9,9 +9,20 @@ function toggleProfileOptions() {
 
 function toggleNavbar() {
     var navbar = document.getElementById("navbar");
-    if (navbar.style.display === "none") {
-        navbar.style.display = "block";
+    var overlay = document.getElementById("overlay");
+    if (navbar.style.left === "-200px") {
+        navbar.style.left = "0";
+        overlay.style.display = "block";
     } else {
-        navbar.style.display = "none";
+        navbar.style.left = "-200px";
+        overlay.style.display = "none";
     }
+}
+
+/* Função para fechar a navbar */
+function closeNavbar() {
+    var navbar = document.getElementById("navbar");
+    var overlay = document.getElementById("overlay");
+    navbar.style.left = "-200px";
+    overlay.style.display = "none";
 }

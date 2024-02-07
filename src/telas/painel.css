@@ -37,20 +37,35 @@ header {
 .notification {
     font-size: 24px;
     cursor: pointer;
+    display: inline-block; /* Alteração para inline-block */
+    margin-right: 10px; /* Adição de margem para separação */
 }
 
-/* Estilos para a barra de navegação */
-.navbar {
+/* Estilo para a camada semi-transparente que cobre o conteúdo */
+.overlay {
     display: none;
     position: fixed;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10; /* Certifique-se de que a camada esteja acima da barra de navegação */
+}
+
+/* Estilo para a barra de navegação */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: -200px; /* Inicialmente, a barra de navegação estará fora da tela */
     background-color: #333;
     color: #fff;
     width: 200px;
     height: 100%;
     padding: 20px;
     box-sizing: border-box;
+    z-index: 20; /* Certifique-se de que a barra de navegação esteja acima da camada semi-transparente */
+    transition: left 0.3s; /* Adiciona uma transição suave para o movimento da barra de navegação */
 }
 
 .navbar ul {
