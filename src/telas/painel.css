@@ -1,0 +1,141 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #030303; /* Cor de fundo opcional */
+    font-family: 'Arial', sans-serif; /* Altere para a fonte desejada */
+}
+
+/* Estilos para o cabeçalho */
+header {
+    position: fixed; /* Define o cabeçalho como posicionado de forma fixa */
+    top: 0; /* Alinha o cabeçalho no topo da tela */
+    width: 100%; /* Define a largura do cabeçalho como 100% da largura da tela */
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.notification {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Estilos para a barra de navegação */
+.navbar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    color: #fff;
+    width: 200px;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.navbar ul li {
+    margin-bottom: 10px;
+}
+
+/* Estilos para o botão do menu */
+.menu-icon {
+    cursor: pointer;
+}
+
+.menu-icon div {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px;
+}
+
+/* Estilos para pop-ups (opcional) */
+.popup-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+    z-index: 9999; /* Certifique-se de que o popup esteja na frente de outros elementos */
+}
+
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra */
+}
+
+.popup h2 {
+    margin-bottom: 10px;
+    color: #ff0000; /* Cor do título do popup */
+}
+
+.popup p {
+    margin-bottom: 15px;
+}
+
+.popup button {
+    background-color: #9810f3;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.popup button:hover {
+    background-color: #7a0cc9;
+}
+
+.profile-options {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.profile-options a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+
+.profile-options a:hover {
+    text-decoration: underline;
+}
