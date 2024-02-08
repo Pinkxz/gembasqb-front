@@ -63,8 +63,26 @@ header {
 }
 
 .navbar ul li {
-    margin-bottom: 10px;
+    margin-bottom: 15px; /* Aumenta o espaçamento entre os itens */
+    border-bottom: 1px solid #555; /* Adiciona uma borda inferior para separação visual */
+    transition: background-color 0.3s; /* Adiciona uma transição suave para o hover */
 }
+
+.navbar ul li:last-child {
+    margin-bottom: 0; /* Remove o espaçamento inferior do último item */
+}
+
+.navbar ul li a {
+    display: block;
+    padding: 10px; /* Adiciona preenchimento aos links para facilitar o clique */
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar ul li a:hover {
+    background-color: #555; /* Altera a cor de fundo no hover */
+}
+
 
 /* Estilos para o botão do menu */
 .menu-icon {
@@ -82,27 +100,29 @@ header {
 .profile-options {
     display: none;
     position: absolute;
-    top: 60px;
-    right: 0;
-    background-color: #333;
+    top: calc(100% + 10px); /* Posiciona o popup abaixo do avatar */
+    right: 10px; /* Alinha o popup à direita */
+    background-color: #fff; /* Fundo branco */
     padding: 10px;
     border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adiciona sombra */
 }
 
 .profile-options a {
     display: block;
-    color: #fff;
+    color: #333; /* Cor do texto */
     text-decoration: none;
-    margin-bottom: 5px;
+    padding: 8px 0; /* Adiciona preenchimento aos links */
 }
 
 .profile-options a:hover {
-    text-decoration: underline;
+    background-color: #f0f0f0; /* Cor de fundo no hover */
+    border-radius: 3px; /* Arredonda os cantos no hover */
 }
 
 
-
 /* Estilos para pop-ups (opcional) */
+/* Estilos para o popup */
 .popup-container {
     display: none;
     position: fixed;
@@ -115,7 +135,7 @@ header {
 }
 
 .popup {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -146,3 +166,4 @@ header {
 .popup button:hover {
     background-color: #7a0cc9;
 }
+
