@@ -121,6 +121,41 @@ header {
 }
 
 
+.dashboard-section {
+    border: 2px solid #9810f3;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: center; /* Centraliza os elementos */
+    margin-right: 20px; /* Adiciona espaço à direita */
+}
+
+.dashboard-cards {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px; /* Adiciona margem superior entre os cards e o título */
+}
+
+.dashboard-card {
+    flex: 1; /* Faz os cards ocuparem o mesmo espaço */
+    margin: 0 10px; /* Adiciona espaçamento horizontal entre os cards */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.dashboard-card a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+}
+
+.dashboard-card:hover {
+    background-color: #f0f0f0; /* Cor de fundo no hover */
+}
+
 /* Estilos para pop-ups (opcional) */
 /* Estilos para o popup */
 .popup-container {
