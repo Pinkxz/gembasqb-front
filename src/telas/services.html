@@ -8,6 +8,10 @@
     <script src="services.jsx"></script>
 </head>
 <body>
+
+    <div class="button-container">
+        <button class="add-button" onclick="openModal()">+Adicionar</button>
+    </div>
     <div class="container" id="serviceContainer">
         <div class="header">
             <span>Nome do serviço</span>
@@ -18,7 +22,6 @@
             <span>Ações</span>
         </div>
     </div>
-    <button onclick="openModal()">+Adicionar</button>
 
     <!-- Modal -->
     <div id="myModal" class="modal">
@@ -49,7 +52,5 @@
             <button onclick="adicionarItem()">Adicionar</button>
         </div>
     </div>
-
-    <script src="scripts.js"></script>
 </body>
 </html>
