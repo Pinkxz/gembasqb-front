@@ -157,6 +157,7 @@ header {
 .dashboard-card:hover {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra mais intensa no hover */
     transform: scale(1.09); /* Aumenta a escala do card no hover */
+    cursor: pointer;
 }
 
 
