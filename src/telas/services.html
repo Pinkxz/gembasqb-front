@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços - GembaSQB</title>
+    <link rel="stylesheet" href="services.css">
+    <script src="services.jsx"></script>
+</head>
+<body>
+    <div class="container" id="serviceContainer">
+        <div class="header">
+            <span>Nome do serviço</span>
+            <span>Categoria</span>
+            <span>Preço</span>
+            <span>Tempo</span>
+            <span>Status</span>
+            <span>Ações</span>
+        </div>
+    </div>
+    <button onclick="openModal()">+Adicionar</button>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <!-- Conteúdo da modal -->
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <label for="nomeServico">Nome do Serviço:</label>
+            <input type="text" id="nomeServico"><br><br>
+            <label for="categoria">Categoria:</label>
+            <input type="text" id="categoria"><br><br>
+            <label for="preco">Preço:</label>
+            <input type="text" id="preco"><br><br>
+            <label for="tempo">Tempo:</label>
+            <input type="text" id="tempo"><br><br>
+            <label for="status">Status:</label>
+            <select id="status">
+                <option value="Ativo">Ativo</option>
+                <option value="Desativado">Desativado</option>
+            </select><br><br>
+            <label for="descricao">Descrição:</label>
+            <input type="text" id="descricao"><br><br>
+            <label for="foto">Foto:</label>
+            <input type="text" id="foto"><br><br>
+            <label for="comissao">Comissão:</label>
+            <input type="text" id="comissao"><br><br>
+            <label for="programaFidelidade">Programa de Fidelidade:</label>
+            <input type="text" id="programaFidelidade"><br><br>
+            <button onclick="adicionarItem()">Adicionar</button>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
