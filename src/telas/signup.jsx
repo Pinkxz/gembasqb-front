@@ -14,14 +14,14 @@ function validateForm() {
       mostrarPopup("Por favor, informe seu nome"); // Chamando a função mostrarPopup quando há erro no nome
       return;
   } else {
-      document.getElementById('nameError').innerHTML = "";
+     // document.getElementById('nameError').innerHTML = "";
   }
 
   // Verificação de e-mail
   var emailError = document.getElementById('emailError');
   emailError.innerHTML = "";
   if (!email.includes('@') || email.split('@')[0].length === 0) {
-      emailError.innerHTML = "Email inválido";
+   //   emailError.innerHTML = "Email inválido";
       mostrarPopup("E-Mail inválido"); // Chamando a função mostrarPopup quando há erro no email
       return;
   }
@@ -30,7 +30,7 @@ function validateForm() {
   var passwordError = document.getElementById('passwordError');
   passwordError.innerHTML = "";
   if (password.length < 8 || !password.match(/(?=.*[A-Z])(?=.*\d)/)) {
-      passwordError.innerHTML = "A senha deve conter no mínimo 8 caracteres, 1 letra maiúscula e 1 número";
+    //  passwordError.innerHTML = "A senha deve conter no mínimo 8 caracteres, 1 letra maiúscula e 1 número";
       mostrarPopup("A senha deve conter no mínimo 8 caracteres, 1 letra maiúscula e 1 número"); // Chamando a função mostrarPopup quando há erro na senha
       return;
   }
@@ -39,18 +39,18 @@ function validateForm() {
   var confirmError = document.getElementById('confirmError');
   confirmError.innerHTML = "";
   if (password !== confirmPassword) {
-      confirmError.innerHTML = "As senhas não correspondem";
+     // confirmError.innerHTML = "As senhas não correspondem";
       mostrarPopup("As senhas não correspondem"); // Chamando a função mostrarPopup quando há erro na confirmação de senha
       return;
   }
 
   // Verificação de número
   if (!number.trim()) {
-      document.getElementById('numberError').innerHTML = "Por favor, informe seu número de telefone";
+     // document.getElementById('numberError').innerHTML = "Por favor, informe seu número de telefone";
       mostrarPopup("Por favor, informe seu número"); // Chamando a função mostrarPopup quando há erro no número
       return;
   } else {
-      document.getElementById('numberError').innerHTML = "";
+     // document.getElementById('numberError').innerHTML = "";
   }
 
   // Outras verificações ou envio do formulário

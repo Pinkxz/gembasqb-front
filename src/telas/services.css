@@ -1,3 +1,18 @@
+.center-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    height: 600px;
+    width: 90%; /* Ajuste a largura conforme necessário */
+    max-width: 800px; /* Defina uma largura máxima para manter o conteúdo legível */
+    padding: 10px;
+    background-color: #f2f2f2; /* Cor de fundo para destacar o conteúdo */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra para destacar o container */
+}
+
 /* Estilos CSS para o contêiner do header e do contêiner com barra de rolagem */
 .container {
     max-width: 700px; /* Largura máxima do contêiner */
@@ -100,8 +115,10 @@
     margin-bottom: 5px;
 }
 
+/* Estilos adicionais para os inputs dentro de .form-group */
 .form-group input,
 .form-group select {
+    position: relative;
     width: 100%;
     padding: 12px;
     box-sizing: border-box;
@@ -115,6 +132,32 @@
 .form-group select:focus,
 .form-group select:hover {
     border-color: purple;
+}
+
+.form-group input:focus,
+.form-group input:hover,
+.form-group select:focus,
+.form-group select:hover {
+    border-color: purple;
+}
+
+.form-group input::placeholder {
+    color: #999;
+}
+
+.price-container {
+    position: relative;
+}
+
+
+/* Estilizando o prefixo "R$" no input de preço */
+.form-group .price-input::before {
+    content: "R$"; /* Texto do prefixo */
+    position: absolute;
+    left: 10px; /* Ajuste de posição */
+    top: 50%; /* Centraliza verticalmente */
+    transform: translateY(-50%);
+    color: #555; /* Cor do prefixo */
 }
 
 .form-group button {
@@ -140,8 +183,3 @@
     height: auto;
 }
 
-/* Posicionamento das labels acima dos inputs */
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
