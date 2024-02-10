@@ -24,33 +24,40 @@
     </div>
 
     <!-- Modal -->
-    <div id="myModal" class="modal">
-        <!-- Conteúdo da modal -->
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
+<!-- Modal -->
+<div id="myModal" class="modal popup-container"> <!-- Adiciona as classes "modal" e "popup-container" -->
+    <!-- Conteúdo da modal -->
+    <div class="modal-content popup"> <!-- Adiciona as classes "modal-content" e "popup" -->
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="form-container"> <!-- Adiciona a classe "form-container" -->
+            <div class="logo-container"> <!-- Adiciona a classe "logo-container" -->
+                <img src="gemba-logo.png" alt="Logo">
+            </div>
             <label for="nomeServico">Nome do Serviço:</label>
-            <input type="text" id="nomeServico"><br><br>
+            <input type="text" id="nomeServico" class="form-group"><br><br> <!-- Adiciona a classe "form-group" -->
             <label for="categoria">Categoria:</label>
-            <input type="text" id="categoria"><br><br>
+            <input type="text" id="categoria" class="form-group"><br><br> <!-- Adiciona a classe "form-group" -->
             <label for="preco">Preço:</label>
-            <input type="text" id="preco"><br><br>
+            <input type="text" id="preco" class="form-group"><br><br> <!-- Adiciona a classe "form-group" -->
             <label for="tempo">Tempo:</label>
-            <input type="text" id="tempo"><br><br>
+            <input type="text" id="tempo" class="form-group"><br><br> <!-- Adiciona a classe "form-group" -->
             <label for="status">Status:</label>
-            <select id="status">
+            <select id="status" class="form-group"> <!-- Adiciona a classe "form-group" -->
                 <option value="Ativo">Ativo</option>
                 <option value="Desativado">Desativado</option>
             </select><br><br>
             <label for="descricao">Descrição:</label>
-            <input type="text" id="descricao"><br><br>
+            <input type="text" id="descricao" class="form-group"><br><br> <!-- Adiciona a classe "form-group" -->
             <label for="foto">Foto:</label>
-            <input type="text" id="foto"><br><br>
+            <input type="text" id="foto" class="form-group"><br><br> <!-- Adiciona a classe "form-group" -->
             <label for="comissao">Comissão:</label>
-            <input type="text" id="comissao"><br><br>
+            <input type="text" id="comissao" class="form-group"><br><br> <!-- Adiciona a classe "form-group" -->
             <label for="programaFidelidade">Programa de Fidelidade:</label>
-            <input type="text" id="programaFidelidade"><br><br>
-            <button onclick="adicionarItem()">Adicionar</button>
+            <input type="text" id="programaFidelidade" class="form-group"><br><br> <!-- Adiciona a classe "form-group" -->
+            <button onclick="adicionarItem()" class="form-group button">Adicionar</button> <!-- Adiciona as classes "form-group" e "button" -->
         </div>
     </div>
+</div>
+
 </body>
 </html>
