@@ -9,15 +9,20 @@
 </head>
 <body>
 
-    <header id="header">
+    <header>
         <div class="logo">
-            <div class="menu-icon" onclick="toggleNavbar()">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <img src="gemba-logo.png" alt="Logo">
+            <a href="index.html"><img src="gemba-logo.png" alt="Logo da Empresa"></a>
         </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="painel.html">Painel</a></li>
+                <li><a href="Paineldecontrole">Painel de Controle</a></li>
+                <li><a href="services.html">Serviços</a></li>
+                <li><a href="produtos">Produtos</a></li>
+                <li><a href="clientes">Clientes</a></li>
+                <li><a href="colaboradores">Colaboradores</a></li>
+            </ul>
+        </nav>
         <div class="profile">
             <div class="notification">&#x1F514;</div>
             <img src="perfil.png" alt="Foto de Perfil" onclick="toggleProfileOptions()">
@@ -27,14 +32,14 @@
             </div>
         </div>
     </header>
-    
+
 <div class="center-container">
         <h1>Lista de Serviços</h1>
     <div class="form-group button">
         <button class="add-button" onclick="openModal()">+Adicionar</button>
     </div>
     <div class="container" id="serviceContainer">
-        <div class="header">
+        <div class="header1">
             <span>Nome do serviço</span>
             <span>Categoria</span>
             <span>Preço</span>

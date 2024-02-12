@@ -10,16 +10,45 @@ body {
 
 /* Estilos para o cabeçalho */
 header {
-    position: fixed; /* Define o cabeçalho como posicionado de forma fixa */
-    top: 0; /* Alinha o cabeçalho no topo da tela */
-    width: 100%; /* Define a largura do cabeçalho como 100% da largura da tela */
-    background-color: #666565;
-    color: #fff;
-    padding: 10px;
+    top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+    padding: 20px;
+    background-color: #000000;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s;
+    border-bottom: 5px solid #9810f3; /* Adicionando borda inferior ao cabeçalho */
+  }
+  
+  .navbar {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .navbar li {
+    margin-right: 20px;
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  .navbar a:hover {
+    color: #9810f3;
+  }
 
 .logo img {
     width: 80px;
@@ -42,62 +71,6 @@ header {
     margin-right: 10px; /* Adição de margem para separação */
 }
 
-
-/* Estilo para a barra de navegação */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: -200px; /* Inicialmente, a barra de navegação estará fora da tela */
-    background-color: #333;
-    color: #fff;
-    width: 200px;
-    height: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-    z-index: 20; /* Certifique-se de que a barra de navegação esteja acima da camada semi-transparente */
-    transition: left 0.3s; /* Adiciona uma transição suave para o movimento da barra de navegação */
-}
-
-.navbar ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.navbar ul li {
-    margin-bottom: 15px; /* Aumenta o espaçamento entre os itens */
-    border-bottom: 1px solid #555; /* Adiciona uma borda inferior para separação visual */
-    transition: background-color 0.3s; /* Adiciona uma transição suave para o hover */
-}
-
-.navbar ul li:last-child {
-    margin-bottom: 0; /* Remove o espaçamento inferior do último item */
-}
-
-.navbar ul li a {
-    display: block;
-    padding: 10px; /* Adiciona preenchimento aos links para facilitar o clique */
-    color: #fff;
-    text-decoration: none;
-}
-
-.navbar ul li a:hover {
-    background-color: #555; /* Altera a cor de fundo no hover */
-}
-
-
-/* Estilos para o botão do menu */
-.menu-icon {
-    cursor: pointer;
-}
-
-.menu-icon div {
-    width: 25px;
-    height: 3px;
-    background-color: #fff;
-    margin: 5px;
-}
-
-
 .profile-options {
     display: none;
     position: absolute;
@@ -119,6 +92,18 @@ header {
 .profile-options a:hover {
     background-color: #f0f0f0; /* Cor de fundo no hover */
     border-radius: 3px; /* Arredonda os cantos no hover */
+}
+
+/* Estilos para o botão do menu */
+.menu-icon {
+    cursor: pointer;
+}
+
+.menu-icon div {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px;
 }
 
 

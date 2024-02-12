@@ -11,6 +11,7 @@
     background-color: #f2f2f2; /* Cor de fundo para destacar o conteúdo */
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra para destacar o container */
+    font-family: 'Arial', sans-serif; /* Altere para a fonte desejada */
 }
 
 /* Estilos CSS para o contêiner do header e do contêiner com barra de rolagem */
@@ -23,12 +24,100 @@
     overflow: auto; /* Adiciona barra de rolagem vertical quando necessário */
 }
 
-/* Estilos CSS para o header */
-.header {
+/* Estilos para o cabeçalho */
+header {
+    top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #666565; 
+    padding: 20px;
+    background-color: #000000;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s;
+    border-bottom: 5px solid #9810f3; /* Adicionando borda inferior ao cabeçalho */
+    font-family: 'Arial', sans-serif; /* Altere para a fonte desejada */
+  }
+  
+  .navbar {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .navbar li {
+    margin-right: 20px;
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  .navbar a:hover {
+    color: #9810f3;
+  }
+
+.logo img {
+    width: 80px;
+    height: 50px;
+    margin-left: 50px;
+}
+
+.profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.notification {
+    font-size: 24px;
+    cursor: pointer;
+    display: inline-block; /* Alteração para inline-block */
+    margin-right: 10px; /* Adição de margem para separação */
+}
+
+.profile-options {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px); /* Posiciona o popup abaixo do avatar */
+    right: 10px; /* Alinha o popup à direita */
+    background-color: #fff; /* Fundo branco */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adiciona sombra */
+}
+
+.profile-options a {
+    display: block;
+    color: #333; /* Cor do texto */
+    text-decoration: none;
+    padding: 8px 0; /* Adiciona preenchimento aos links */
+}
+
+.profile-options a:hover {
+    background-color: #f0f0f0; /* Cor de fundo no hover */
+    border-radius: 3px; /* Arredonda os cantos no hover */
+}
+
+
+/* Estilos CSS para o header */
+.header1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000; 
     color: #fff;
     padding: 10px 20px;
 }
@@ -181,73 +270,4 @@
 .logo-container img {
     max-width: 100%;
     height: auto;
-}
-
-/* Estilos para o cabeçalho */
-header {
-    position: fixed; /* Define o cabeçalho como posicionado de forma fixa */
-    top: 0; /* Alinha o cabeçalho no topo da tela */
-    width: 100%; /* Define a largura do cabeçalho como 100% da largura da tela */
-    background-color: #666565;
-    color: #fff;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo img {
-    width: 80px;
-    height: 50px;
-    margin-left: 50px;
-}
-
-.profile img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-    cursor: pointer;
-}
-
-.notification {
-    font-size: 24px;
-    cursor: pointer;
-    display: inline-block; /* Alteração para inline-block */
-    margin-right: 10px; /* Adição de margem para separação */
-}
-
-.profile-options {
-    display: none;
-    position: absolute;
-    top: calc(100% + 10px); /* Posiciona o popup abaixo do avatar */
-    right: 10px; /* Alinha o popup à direita */
-    background-color: #fff; /* Fundo branco */
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adiciona sombra */
-}
-
-.profile-options a {
-    display: block;
-    color: #333; /* Cor do texto */
-    text-decoration: none;
-    padding: 8px 0; /* Adiciona preenchimento aos links */
-}
-
-.profile-options a:hover {
-    background-color: #f0f0f0; /* Cor de fundo no hover */
-    border-radius: 3px; /* Arredonda os cantos no hover */
-}
-
-/* Estilo para o botão do menu */
-.menu-icon {
-    cursor: pointer;
-}
-
-.menu-icon div {
-    width: 25px;
-    height: 3px;
-    background-color: #fff;
-    margin: 5px;
 }
