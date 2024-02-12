@@ -8,6 +8,26 @@
     <script src="services.jsx"></script>
 </head>
 <body>
+
+    <header id="header">
+        <div class="logo">
+            <div class="menu-icon" onclick="toggleNavbar()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <img src="gemba-logo.png" alt="Logo">
+        </div>
+        <div class="profile">
+            <div class="notification">&#x1F514;</div>
+            <img src="perfil.png" alt="Foto de Perfil" onclick="toggleProfileOptions()">
+            <div class="profile-options" id="profileOptions">
+                <a href="#">Painel de Controle</a>
+                <a href="/index.html">Sair</a>
+            </div>
+        </div>
+    </header>
+    
 <div class="center-container">
         <h1>Lista de Serviços</h1>
     <div class="form-group button">
