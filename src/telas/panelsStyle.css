@@ -1,3 +1,13 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #ffffff; /* Cor de fundo opcional */
+    font-family: 'Arial', sans-serif; /* Altere para a fonte desejada */
+}
+
 .center-container {
     position: absolute;
     top: 50%;
@@ -24,6 +34,7 @@
     overflow: auto; /* Adiciona barra de rolagem vertical quando necessário */
 }
 
+
 /* Estilos para o cabeçalho */
 header {
     top: 0;
@@ -37,7 +48,6 @@ header {
     z-index: 1000;
     transition: background-color 0.3s;
     border-bottom: 5px solid #9810f3; /* Adicionando borda inferior ao cabeçalho */
-    font-family: 'Arial', sans-serif; /* Altere para a fonte desejada */
   }
   
   .navbar {
@@ -111,6 +121,43 @@ header {
     border-radius: 3px; /* Arredonda os cantos no hover */
 }
 
+.dashboard-section {
+    border: 2px solid #9810f3;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: center; /* Centraliza os elementos */
+   /* margin-right: 20px; /* Adiciona espaço à direita */
+}
+
+.dashboard-cards {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px; /* Adiciona margem superior entre os cards e o título */
+}
+
+.dashboard-card {
+    flex: 1;
+    margin: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    transition: box-shadow 0.3s, transform 0.3s; /* Adiciona uma transição suave para a sombra e escala */
+}
+
+.dashboard-card a {
+    text-decoration: none;
+    color: #9810f3;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+}
+
+.dashboard-card:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra mais intensa no hover */
+    transform: scale(1.09); /* Aumenta a escala do card no hover */
+    cursor: pointer;
+}
 
 /* Estilos CSS para o header */
 .header1 {
@@ -174,7 +221,7 @@ header {
 .close {
     color: #ff0000;
     float: right;
-    font-size: 28px;
+    font-size: 50px;
     font-weight: bold;
     cursor: pointer;
 }
@@ -234,20 +281,6 @@ header {
     color: #999;
 }
 
-.price-container {
-    position: relative;
-}
-
-
-/* Estilizando o prefixo "R$" no input de preço */
-.form-group .price-input::before {
-    content: "R$"; /* Texto do prefixo */
-    position: absolute;
-    left: 10px; /* Ajuste de posição */
-    top: 50%; /* Centraliza verticalmente */
-    transform: translateY(-50%);
-    color: #555; /* Cor do prefixo */
-}
 
 .form-group button {
     background-color: #9810f3;
@@ -261,13 +294,4 @@ header {
 
 .form-group button:hover {
     background-color: #7a0cc9;
-}
-
-.logo-container {
-    margin-bottom: 10px;
-}
-
-.logo-container img {
-    max-width: 100%;
-    height: auto;
 }
