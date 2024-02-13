@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes=32x32 href="G-icon.png" />
+    <link rel="stylesheet" href="panelsStyle.css">
+    <script src="painel.jsx"></script>
+    <script src="https://kit.fontawesome.com/ef81c94b0d.js" crossorigin="anonymous"></script>
+    <title>Painel - GembaSQB</title>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="gemba-logo.png" alt="Logo da Empresa"></a>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="painel.html">Painel</a></li>
+                <li><a style="color: #9810f3" href="paineLControle.html">Painel de Controle</a></li>
+                <li><a href="services.html">Serviços</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="cliente.html">Clientes</a></li>
+                <li><a href="colaboradores">Colaboradores</a></li>
+            </ul>
+        </nav>
+        <div class="profile">
+            <div class="notification">&#x1F514;</div>
+            <img src="perfil.png" alt="Foto de Perfil" onclick="toggleProfileOptions()">
+            <div class="profile-options" id="profileOptions">
+                <a href="#">Painel de Controle</a>
+                <a href="/index.html">Sair</a>
+            </div>
+        </div>
+    </header>
