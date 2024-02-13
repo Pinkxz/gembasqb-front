@@ -8,6 +8,13 @@ function closeModal() {
     document.getElementById("myModal").style.display = "none";
 }
 
+function createSpan(text) {
+    var span = document.createElement("span");
+    span.textContent = text;
+    span.style.flexBasis = "15%";
+    return span;
+}
+
 // Função para adicionar um novo item
 function adicionarItem() {
     var container = document.getElementById("serviceContainer");
@@ -87,13 +94,7 @@ function adicionarItem() {
     }
 }
 
-function createSpan(text) {
-    var span = document.createElement("span");
-    span.textContent = text;
-    span.style.flexBasis = "15%";
-    return span;
-}
-
+// Função para adicionar um novo cliente
 function adicionarCliente() {
     var container = document.getElementById("serviceContainer");
     var item = document.createElement("div");
@@ -101,7 +102,7 @@ function adicionarCliente() {
 
     var nome = document.getElementById("nomeServico").value;
     var email = document.getElementById("descricao").value;
-    var dataCadastro = document.getElementById("peso").value;
+    var dataCadastro = document.getElementById("dataC").value;
     var status = document.getElementById("status").value;
     var foto = document.getElementById("foto").value;
 
@@ -161,7 +162,7 @@ function adicionarColaborador() {
     item.appendChild(emailSpan);
     item.appendChild(senhaSpan);
     item.appendChild(statusSpan);
-    
+
     var deleteBtn = document.createElement("button");
     deleteBtn.classList.add("delete-btn");
     deleteBtn.textContent = "Deletar";
@@ -179,6 +180,7 @@ function adicionarColaborador() {
     }
 }
 
+// Função para adicionar um novo produto
 function adicionarProduto() {
     var container = document.getElementById("serviceContainer");
     var item = document.createElement("div");
@@ -199,11 +201,9 @@ function adicionarProduto() {
     var fotoSpan = createSpan(foto);
 
     item.appendChild(nomeSpan);
-    item.appendChild(descricaoSpan);
-    item.appendChild(precoSpan);
     item.appendChild(categoriaSpan);
+    item.appendChild(precoSpan);
     item.appendChild(statusSpan);
-    item.appendChild(fotoSpan);
 
     var deleteBtn = document.createElement("button");
     deleteBtn.classList.add("delete-btn");
@@ -221,6 +221,7 @@ function adicionarProduto() {
         container.style.overflowY = "scroll";
     }
 }
+
 
 // Função para gerar senha aleatória
 function generateRandomPassword() {
