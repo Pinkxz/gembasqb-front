@@ -87,6 +87,152 @@ function adicionarItem() {
     }
 }
 
+function createSpan(text) {
+    var span = document.createElement("span");
+    span.textContent = text;
+    span.style.flexBasis = "15%";
+    return span;
+}
+
+function adicionarCliente() {
+    var container = document.getElementById("serviceContainer");
+    var item = document.createElement("div");
+    item.classList.add("item");
+
+    var nome = document.getElementById("nomeServico").value;
+    var email = document.getElementById("descricao").value;
+    var dataCadastro = document.getElementById("peso").value;
+    var status = document.getElementById("status").value;
+    var foto = document.getElementById("foto").value;
+
+    var nomeSpan = createSpan(nome);
+    var emailSpan = createSpan(email);
+    var dataCadastroSpan = createSpan(dataCadastro);
+    var statusSpan = createSpan(status);
+    var fotoSpan = createSpan(foto);
+
+    item.appendChild(nomeSpan);
+    item.appendChild(emailSpan);
+    item.appendChild(dataCadastroSpan);
+    item.appendChild(statusSpan);
+    item.appendChild(fotoSpan);
+
+    var deleteBtn = document.createElement("button");
+    deleteBtn.classList.add("delete-btn");
+    deleteBtn.textContent = "Deletar";
+    deleteBtn.onclick = function() {
+        container.removeChild(item);
+    };
+    deleteBtn.style.flexBasis = "5%";
+    item.appendChild(deleteBtn);
+
+    container.appendChild(item);
+    closeModal();
+
+    if (container.scrollHeight > container.clientHeight) {
+        container.style.overflowY = "scroll";
+    }
+}
+
+function adicionarColaborador() {
+    var container = document.getElementById("serviceContainer");
+    var item = document.createElement("div");
+    item.classList.add("item");
+
+    var nome = document.getElementById("nomeServico").value;
+    var email = document.getElementById("descricao").value;
+    var cpf = document.getElementById("cpf").value;
+    var whatsapp = document.getElementById("Whatsapp").value;
+    var status = document.getElementById("status").value;
+    var foto = document.getElementById("foto").value;
+
+    // Geração de senha aleatória
+    var senha = generateRandomPassword();
+
+    var nomeSpan = createSpan(nome);
+    var emailSpan = createSpan(email);
+    var cpfSpan = createSpan(cpf);
+    var whatsappSpan = createSpan(whatsapp);
+    var statusSpan = createSpan(status);
+    var fotoSpan = createSpan(foto);
+    var senhaSpan = createSpan(senha);
+
+    item.appendChild(nomeSpan);
+    item.appendChild(emailSpan);
+    item.appendChild(senhaSpan);
+    item.appendChild(statusSpan);
+    
+    var deleteBtn = document.createElement("button");
+    deleteBtn.classList.add("delete-btn");
+    deleteBtn.textContent = "Deletar";
+    deleteBtn.onclick = function() {
+        container.removeChild(item);
+    };
+    deleteBtn.style.flexBasis = "5%";
+    item.appendChild(deleteBtn);
+
+    container.appendChild(item);
+    closeModal();
+
+    if (container.scrollHeight > container.clientHeight) {
+        container.style.overflowY = "scroll";
+    }
+}
+
+function adicionarProduto() {
+    var container = document.getElementById("serviceContainer");
+    var item = document.createElement("div");
+    item.classList.add("item");
+
+    var nome = document.getElementById("nomeServico").value;
+    var descricao = document.getElementById("descricao").value;
+    var preco = document.getElementById("preco").value;
+    var categoria = document.getElementById("categoria").value;
+    var status = document.getElementById("status").value;
+    var foto = document.getElementById("foto").value;
+
+    var nomeSpan = createSpan(nome);
+    var descricaoSpan = createSpan(descricao);
+    var precoSpan = createSpan(preco);
+    var categoriaSpan = createSpan(categoria);
+    var statusSpan = createSpan(status);
+    var fotoSpan = createSpan(foto);
+
+    item.appendChild(nomeSpan);
+    item.appendChild(descricaoSpan);
+    item.appendChild(precoSpan);
+    item.appendChild(categoriaSpan);
+    item.appendChild(statusSpan);
+    item.appendChild(fotoSpan);
+
+    var deleteBtn = document.createElement("button");
+    deleteBtn.classList.add("delete-btn");
+    deleteBtn.textContent = "Deletar";
+    deleteBtn.onclick = function() {
+        container.removeChild(item);
+    };
+    deleteBtn.style.flexBasis = "5%";
+    item.appendChild(deleteBtn);
+
+    container.appendChild(item);
+    closeModal();
+
+    if (container.scrollHeight > container.clientHeight) {
+        container.style.overflowY = "scroll";
+    }
+}
+
+// Função para gerar senha aleatória
+function generateRandomPassword() {
+    var length = 8;
+    var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@";
+    var password = "";
+    for (var i = 0; i < length; ++i) {
+        password += charset.charAt(Math.floor(Math.random() * charset.length));
+    }
+    return password;
+}
+
 function toggleProfileOptions() {
     var profileOptions = document.getElementById("profileOptions");
     if (profileOptions.style.display === "none") {
