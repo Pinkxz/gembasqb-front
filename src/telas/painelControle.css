@@ -72,6 +72,35 @@ header {
     font-weight: bold;
     transition: color 0.3s;
   }
+
+  /* Estilos para a segunda navbar */
+.secondary-navbar {
+    background-color: #000000; /* Cor de fundo */
+    padding: 10px 20px; /* Espaçamento interno */
+}
+
+.secondary-navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.secondary-navbar li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.secondary-navbar a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.secondary-navbar a:hover {
+    color: #9810f3;
+}
+
   
   .navbar a:hover {
     color: #9810f3;
