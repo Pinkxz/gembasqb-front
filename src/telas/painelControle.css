@@ -121,11 +121,12 @@ header {
     border-radius: 3px; /* Arredonda os cantos no hover */
 }
 
-.secondary-navbar {
+.secondary-navbar { 
     background-color: #000000; /* Cor de fundo */
     padding: 10px 20px; /* Espaçamento interno */
     border-bottom: 5px solid #9810f3;
     width: 100%; /* Garante que a largura da barra seja igual à largura do cabeçalho */
+    margin-bottom: 770px;
 }
 
 .secondary-navbar ul {
