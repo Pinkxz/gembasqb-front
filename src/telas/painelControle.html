@@ -37,8 +37,29 @@
 
     <div class="secondary-navbar">
         <ul>
-            <li><a href="painelControle.html" class="active">Painel de Controle</a></li>
-            <li><a href="fluxo.html">Fluxo de caixa</a></li>
+            <li><a href="painelControle.html" class="active">Fluxo de Caixa</a></li>
             <li><a href="agenda.html">Agenda</a></li>
+            <li><a href="relatorios.html">Relatórios</a></li>
         </ul>
     </div>
+
+    <div class="container">
+        <h1>Frente de Caixa</h1>
+        <button onclick="openPopup()">Abrir Caixa</button>
+
+        <!-- Popup -->
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <h2>Informe o valor inicial do caixa</h2>
+                <input type="number" id="valorInicial" placeholder="R$00,00">   
+                <div class="popup-buttons">
+                    <button onclick="cancelar()">Cancelar</button>
+                    <button onclick="abrirCaixa()">Abrir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

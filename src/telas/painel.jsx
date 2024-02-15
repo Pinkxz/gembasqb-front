@@ -6,3 +6,21 @@ function toggleProfileOptions() {
         profileOptions.style.display = "none";
     }
 }
+
+function openPopup() {
+    document.getElementById("popup").style.display = "block";
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+
+function cancelar() {
+    closePopup();
+    // Implemente a lógica para cancelar aqui
+}
+
+function abrirCaixa() {
+    // Implemente a lógica para abrir o caixa aqui
+    closePopup();
+}
