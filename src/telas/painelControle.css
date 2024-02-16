@@ -17,8 +17,8 @@ body {
     height: 600px;
     width: 90%; /* Ajuste a largura conforme necessário */
     max-width: 800px; 
-    padding: 10px;
-    background-color: #f2f2f2; /* Cor de fundo para destacar o conteúdo */
+    padding: 10px 500px;
+    background-color: #ffffff; /* Cor de fundo para destacar o conteúdo */
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     font-family: 'Arial', sans-serif; 
@@ -187,6 +187,10 @@ header {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra */
 }
+
+.popup {
+    display: none;
+}
   
 .popup h2 {
     margin-bottom: 10px;
@@ -209,4 +213,25 @@ header {
 .popup button:hover {
     background-color: #7a0cc9;
 }
-  
+
+.popup input,
+.popup select {
+    position: relative;
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    transition: border-color 0.5s;
+}
+
+.popup input:focus,
+.popup input:hover,
+.popup select:focus,
+.popup select:hover {
+    border-color: purple;
+}
+
+.popup input::placeholder {
+    color: #999;
+}

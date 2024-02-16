@@ -275,13 +275,6 @@ header {
     border-color: purple;
 }
 
-.form-group input:focus,
-.form-group input:hover,
-.form-group select:focus,
-.form-group select:hover {
-    border-color: purple;
-}
-
 .form-group input::placeholder {
     color: #999;
 }

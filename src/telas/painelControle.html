@@ -18,14 +18,14 @@
         <nav class="navbar">
             <ul>
                 <li><a href="painel.html">Painel</a></li>
-                <li><a style="color: #9810f3" href="paineLControle.html">Painel de Controle</a></li>
+                <li><a style="color: #9810f3" href="#">Painel de Controle</a></li>
                 <li><a href="services.html">Serviços</a></li>
                 <li><a href="produtos.html">Produtos</a></li>
                 <li><a href="cliente.html">Clientes</a></li>
                 <li><a href="colaboradores">Colaboradores</a></li>
             </ul>
         </nav>
-        <div class="profile">
+        <div class="profile"> 
             <div class="notification">&#x1F514;</div>
             <img src="perfil.png" alt="Foto de Perfil" onclick="toggleProfileOptions()">
             <div class="profile-options" id="profileOptions">
@@ -51,9 +51,11 @@
         <div id="popup" class="popup">
             <div class="popup-content">
                 <h2>Informe o valor inicial do caixa</h2>
-                <input type="number" id="valorInicial" placeholder="R$00,00">   
+                <label for="inicial">Valor de abertura do Caixa:</label>
+                <input type="text" id="valorInicial" class="form-input" placeholder="R$00,00">   
+                <input type="text" id="observacao" class="form-input" placeholder="Observação">
                 <div class="popup-buttons">
-                    <button onclick="cancelar()">Cancelar</button>
+                    <button onclick="closePopup()">Cancelar</button>
                     <button onclick="abrirCaixa()">Abrir</button>
                 </div>
             </div>
