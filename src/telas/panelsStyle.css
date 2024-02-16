@@ -122,6 +122,7 @@ header {
 }
 
 .dashboard-section {
+    box-shadow: 0 0 10px rgba(207, 0, 248, 0.973);
     border: 2px solid #9810f3;
     padding: 20px;
     border-radius: 10px;
