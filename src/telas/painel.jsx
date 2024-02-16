@@ -13,12 +13,14 @@ window.onload = function () {
     if (caixaAberto === "true") {
         document.getElementById("caixaFechado").style.display = "none";
         document.getElementById("frenteCaixa").style.display = "block";
+        document.getElementById("saldoBloco").style.display = "block"; // Exibir bloco de saldo
 
-        // Restaurar horário de abertura
-        var horaAbertura = localStorage.getItem("horaAbertura");
-        document.getElementById("abertura").innerText = "Aberto em: " + horaAbertura;
+        // Atualizar valor do saldo com o valor inicial inserido ao abrir o caixa
+        var valorInicial = localStorage.getItem("valorInicial");
+        document.getElementById("saldoInicial").innerText = "R$" + valorInicial;
     }
 }
+
 function openPopup() {
     document.getElementById("popup").style.display = "block";
 }
@@ -35,8 +37,12 @@ function abrirCaixa() {
     document.getElementById("abertura").innerText = "Aberto em: " + now.toLocaleDateString() + " " + time;
     document.getElementById("caixaFechado").style.display = "none";
     document.getElementById("frenteCaixa").style.display = "block";
-    localStorage.setItem("caixaAberto", "true");
+    document.getElementById("saldoBloco").style.display = "block"; // Exibir bloco de saldo
+    var valorInicial = document.getElementById("valorInicial").value; // Obter o valor inicial inserido
+    document.getElementById("saldoInicial").innerText = "R$" + valorInicial; // Atualizar valor do saldo
     localStorage.setItem("horaAbertura", now.toLocaleDateString() + " " + time); // Salvar horário de abertura
+    localStorage.setItem("caixaAberto", "true");
+    localStorage.setItem("valorInicial", valorInicial); // Salvar valor inicial no localStorage
     closePopup();
 }
 
