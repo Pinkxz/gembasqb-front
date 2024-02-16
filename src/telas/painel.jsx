@@ -13,9 +13,12 @@ window.onload = function () {
     if (caixaAberto === "true") {
         document.getElementById("caixaFechado").style.display = "none";
         document.getElementById("frenteCaixa").style.display = "block";
+
+        // Restaurar horário de abertura
+        var horaAbertura = localStorage.getItem("horaAbertura");
+        document.getElementById("abertura").innerText = "Aberto em: " + horaAbertura;
     }
 }
-
 function openPopup() {
     document.getElementById("popup").style.display = "block";
 }
@@ -33,8 +36,10 @@ function abrirCaixa() {
     document.getElementById("caixaFechado").style.display = "none";
     document.getElementById("frenteCaixa").style.display = "block";
     localStorage.setItem("caixaAberto", "true");
+    localStorage.setItem("horaAbertura", now.toLocaleDateString() + " " + time); // Salvar horário de abertura
     closePopup();
 }
+
 
 function fecharCaixa() {
     document.getElementById("caixaFechado").style.display = "block";

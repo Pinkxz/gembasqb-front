@@ -328,3 +328,23 @@ header {
 .form-group button:hover {
     background-color: #7a0cc9;
 }
+
+.saldo-bloco {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.saldo-bloco h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.saldo-bloco p {
+    margin: 5px 0 0;
+    font-size: 14px;
+}

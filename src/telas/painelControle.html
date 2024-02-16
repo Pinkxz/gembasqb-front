@@ -45,11 +45,16 @@
 
     <div class="container">
         <!-- Conteúdo inicial -->
+
         <div id="caixaFechado">
             <h1>Caixa Fechado!</h1>
             <button onclick="openPopup()">Abrir Caixa</button>
         </div>
-
+        <div class="saldo-bloco">
+            <h3>Saldo</h3>
+            <p id="saldoInicial">R$0,00</p>
+        </div>
+    
         <!-- Popup -->
         <div id="popup" class="popup">
             <div class="popup-content">
@@ -80,14 +85,8 @@
                     <img src="gemba-logo.png" alt="Logo">
                 </div>
 
-                <div class="form-group">
-                    <select id="clientesSelect">
-                      <!-- As opções serão adicionadas dinamicamente aqui -->
-                   </select>
-                </div>
-                
                 <div class="form-group button">
-                    <button onclick="adicionarComanda()">Adicionar</button>
+                    <button onclick="fecharCaixa()">Adicionar</button>
                 </div>
             </div>
         </div>
