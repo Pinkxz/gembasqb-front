@@ -44,24 +44,54 @@
     </div>
 
     <div class="container">
-        <h1>Frente de Caixa</h1>
-        <button onclick="openPopup()">Abrir Caixa</button>
+        <!-- Conteúdo inicial -->
+        <div id="caixaFechado">
+            <h1>Caixa Fechado!</h1>
+            <button onclick="openPopup()">Abrir Caixa</button>
+        </div>
 
         <!-- Popup -->
         <div id="popup" class="popup">
             <div class="popup-content">
-                <h2>Informe o valor inicial do caixa</h2>
-                <label for="inicial">Valor de abertura do Caixa:</label>
-                <input type="text" id="valorInicial" class="form-input" placeholder="R$00,00">   
-                <input type="text" id="observacao" class="form-input" placeholder="Observação">
+                <h2>Abertura de Caixa</h2>
+                <label for="inicial">Valor de abertura do Caixa*</label>
+                <input type="text" id="valorInicial" class="form-input" placeholder="R$00,00"><br><br>
+                <input type="text" id="observacao" class="form-input" placeholder="Observação"><br><br>
                 <div class="popup-buttons">
                     <button onclick="closePopup()">Cancelar</button>
                     <button onclick="abrirCaixa()">Abrir</button>
                 </div>
             </div>
+         </div>
+    
+        <!-- Frente de Caixa (inicialmente oculto) -->
+        <div id="frenteCaixa" style="display: none;">
+            <h1>Frente de Caixa</h1>
+            <p id="abertura"></p>
+            <button onclick="openModal()">Adicionar Comanda</button>
+        </div>
+    
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="form-container">
+                <div class="logo-container">
+                    <img src="gemba-logo.png" alt="Logo">
+                </div>
+
+                <div class="form-group">
+                    <select id="clientesSelect">
+                      <!-- As opções serão adicionadas dinamicamente aqui -->
+                   </select>
+                </div>
+                
+                <div class="form-group button">
+                    <button onclick="adicionarComanda()">Adicionar</button>
+                </div>
+            </div>
         </div>
     </div>
-
-
+    </div>
 </body>
 </html>
