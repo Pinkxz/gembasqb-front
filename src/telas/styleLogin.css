@@ -128,3 +128,46 @@
   .popup button:hover {
   background-color: #7a0cc9;
   }
+
+  .dashboard-section {
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: center; /* Centraliza os elementos */
+   /* margin-right: 20px; /* Adiciona espaço à direita */
+}
+
+.dashboard-cards {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px; /* Adiciona margem superior entre os cards e o título */
+}
+
+.dashboard-card {
+  flex: 1;
+  margin: 0 5px; /* Reduzindo a margem para separação entre os cards */
+  width: 150px; /* Definindo uma largura menor */
+  height: 100px; /* Definindo uma altura menor */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.dashboard-card h1 {
+    text-decoration: none;
+    color: #9810f3;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+}
+
+.dashboard-card:hover {
+    box-shadow: 0 0 20px rgba(0, 17, 255); /* Adiciona uma sombra mais intensa no hover */
+    transform: scale(1.09); /* Aumenta a escala do card no hover */
+    cursor: pointer;
+}
+.selected-card {
+  box-shadow: 0 0 20px rgb(0, 17, 255);
+  transform: scale(1.03);
+} 

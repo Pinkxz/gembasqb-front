@@ -111,3 +111,14 @@ function prevStep() {
     document.getElementById(`step${currentStep}`).style.display = 'block';
   }
 }
+
+function selectCard(card) {
+  // Remove a classe de todos os cards
+  var cards = document.querySelectorAll('.dashboard-card');
+  cards.forEach(function(card) {
+    card.classList.remove('selected-card');
+  });
+
+  // Adiciona a classe apenas ao card clicado
+  card.classList.add('selected-card');
+}

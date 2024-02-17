@@ -58,15 +58,56 @@
   </div>
 </div><!--Fim do primeiro passo-->
 
+
 <div id="step2" class="step" style="display: none;">
   <!-- Conteúdo do Passo 2 -->
   <div class="form-container">
+    <h1>Dados da Empresa</h1>
+    <div class="form-group">
+      <label for="companyName">Nome da Empresa:</label>
+      <input type="text" id="companyName" name="companyName">
+    </div>
+
+    <div class="form-group">
+      <section class="dashboard-section">
+        <div class="dashboard-header">
+            <h2 style="color: #9810f3;">Tamanho da Empresa</h2>
+        </div>
+        <div class="dashboard-cards">
+          <div class="dashboard-card" data-size="Trabalho sozinho" onclick="selectCard(this)">
+            <h1>Sozinho</h1>
+            <p>Trabalho sozinho.</p>
+          </div>
+          
+          <div class="dashboard-card" data-size="Microempresa" onclick="selectCard(this)">
+            <h1>Microempresa</h1>
+            <p>Entre 2 a 5 funcionários.</p>
+          </div>
+          
+          <div class="dashboard-card" data-size="Pequena empresa" onclick="selectCard(this)">
+            <h1>Pequena</h1>
+            <p>Entre 6 a 10 funcionários.</p>
+          </div>
+          
+          <div class="dashboard-card" data-size="Média ou grande empresa" onclick="selectCard(this)">
+            <h1>Média/grande</h1>
+            <p>Acima de 10 funcionários.</p>
+          </div>
+          
+          <div class="dashboard-card" data-size="Redes e Franquias" onclick="selectCard(this)">
+            <h1>Redes</h1>
+            <p>Meu negócio é uma rede ou franquia.</p>
+          </div>
+          
+        </div>
+    </section>
     <div class="form-group">
       <button onclick="prevStep()">Anterior</button><br><br>
       <button onclick="nextStep()">Próximo</button>
     </div>
   </div>
 </div>
+
 
 <div id="step3" class="step" style="display: none;">
   <!-- Conteúdo do Passo 3 -->
@@ -77,7 +118,7 @@
   </div>
 </div>
   
-</div>
+
 
 <div id="step4" class="step" style="display: none;">
   <!-- Conteúdo do Passo 4 -->
