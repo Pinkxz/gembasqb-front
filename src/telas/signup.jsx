@@ -11,7 +11,7 @@ function validateForm() {
   // Verificação de nome
   if (!name.trim()) {
      // document.getElementById('nameError').innerHTML = "Por favor, informe seu nome";
-      mostrarPopup("Por favor, informe seu nome"); // Chamando a função mostrarPopup quando há erro no nome
+     // mostrarPopup("Por favor, informe seu nome"); // Chamando a função mostrarPopup quando há erro no nome
       alert("Por favor, informe seu nome");
       return;
   } else {
@@ -23,7 +23,7 @@ function validateForm() {
   emailError.innerHTML = "";
   if (!email.includes('@') || email.split('@')[0].length === 0) {
    //   emailError.innerHTML = "Email inválido";
-      mostrarPopup("E-Mail inválido"); // Chamando a função mostrarPopup quando há erro no email
+    //  mostrarPopup("E-Mail inválido"); // Chamando a função mostrarPopup quando há erro no email
       alert("E-Mail inválido");
       return;
   }
@@ -33,7 +33,7 @@ function validateForm() {
   passwordError.innerHTML = "";
   if (password.length < 8 || !password.match(/(?=.*[A-Z])(?=.*\d)/)) {
     //  passwordError.innerHTML = "A senha deve conter no mínimo 8 caracteres, 1 letra maiúscula e 1 número";
-      mostrarPopup("A senha deve conter no mínimo 8 caracteres, 1 letra maiúscula e 1 número"); // Chamando a função mostrarPopup quando há erro na senha
+   //   mostrarPopup("A senha deve conter no mínimo 8 caracteres, 1 letra maiúscula e 1 número"); // Chamando a função mostrarPopup quando há erro na senha
       alert("A senha deve conter no mínimo 8 caracteres, 1 letra maiúscula e 1 número");
       return;
   }
@@ -43,7 +43,7 @@ function validateForm() {
   confirmError.innerHTML = "";
   if (password !== confirmPassword) {
      // confirmError.innerHTML = "As senhas não correspondem";
-      mostrarPopup("As senhas não correspondem"); // Chamando a função mostrarPopup quando há erro na confirmação de senha
+      //mostrarPopup("As senhas não correspondem"); // Chamando a função mostrarPopup quando há erro na confirmação de senha
       alert("As senhas não correspondem");
       return;
   }
@@ -51,7 +51,7 @@ function validateForm() {
   // Verificação de número
   if (!number.trim()) {
      // document.getElementById('numberError').innerHTML = "Por favor, informe seu número de telefone";
-      mostrarPopup("Por favor, informe seu número"); // Chamando a função mostrarPopup quando há erro no número
+     // mostrarPopup("Por favor, informe seu número"); // Chamando a função mostrarPopup quando há erro no número
       alert("Por favor, informe seu número");
       return;
   } else {
