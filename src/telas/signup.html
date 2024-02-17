@@ -17,6 +17,10 @@
   </a>
 </div>
 
+<div id="step1" class="step">
+  <!-- Conteúdo do Passo 1 -->
+
+
 <div class="form-container">
   <div class="form-group">
     <label for="name">Nome:</label>
@@ -44,7 +48,7 @@
   </div>
   
   <div class="form-group">
-    <button type="button" onclick="validateForm()">Cadastrar</button>
+    <button type="button" onclick="validateForm()">Próximo</button>
   </div>
   
   <div class="form-options">
@@ -67,6 +71,25 @@
     <p id="error-popup-message"></p>
     <button onclick="fecharPopup()">OK</button>
   </div>
+</div>
+
+</div>
+
+<div id="step2" class="step" style="display: none;">
+  <!-- Conteúdo do Passo 2 -->
+</div>
+
+<div id="step3" class="step" style="display: none;">
+  <!-- Conteúdo do Passo 3 -->
+</div>
+
+<div id="step4" class="step" style="display: none;">
+  <!-- Conteúdo do Passo 4 -->
+</div>
+
+<div class="form-group">
+  <button onclick="prevStep()">Anterior</button>
+  <button onclick="nextStep()">Próximo</button>
 </div>
 
 </body>

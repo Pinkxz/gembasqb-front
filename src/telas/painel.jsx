@@ -62,6 +62,30 @@ function closeModal() {
     document.getElementById("myModal").style.display = "none";
 }
 
+
+
+var etapaAtual = 1;
+
+function avancarEtapa() {
+    var etapaAtualDiv = document.getElementById("etapa" + etapaAtual);
+    etapaAtualDiv.style.display = "none";
+    etapaAtual++;
+    var proximaEtapaDiv = document.getElementById("etapa" + etapaAtual);
+    if (proximaEtapaDiv) {
+        proximaEtapaDiv.style.display = "block";
+    }
+}
+
+function voltarEtapa() {
+    if (etapaAtual === 1) return;
+    var etapaAtualDiv = document.getElementById("etapa" + etapaAtual);
+    etapaAtualDiv.style.display = "none";
+    etapaAtual--;
+    var etapaAnteriorDiv = document.getElementById("etapa" + etapaAtual);
+    if (etapaAnteriorDiv) {
+        etapaAnteriorDiv.style.display = "block";
+    }
+}
 /*========================================================================Funcionamento Front-End acima==================================================*/
 
 function preencherClientesSelect() {
