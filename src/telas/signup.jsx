@@ -10,65 +10,36 @@ function validateForm() {
 
   // Verificação de nome
   if (!name.trim()) {
-     // document.getElementById('nameError').innerHTML = "Por favor, informe seu nome";
-     // mostrarPopup("Por favor, informe seu nome"); // Chamando a função mostrarPopup quando há erro no nome
-      alert("Por favor, informe seu nome");
-      return;
-  } else {
-      document.getElementById('nameError').innerHTML = "";
+    alert("Por favor, informe seu nome");
+    return false;
   }
 
   // Verificação de e-mail
-  var emailError = document.getElementById('emailError');
-  emailError.innerHTML = "";
   if (!email.includes('@') || email.split('@')[0].length === 0) {
-   //   emailError.innerHTML = "Email inválido";
-    //  mostrarPopup("E-Mail inválido"); // Chamando a função mostrarPopup quando há erro no email
-      alert("E-Mail inválido");
-      return;
+    alert("E-Mail inválido");
+    return false;
   }
 
   // Verificação de senha
-  var passwordError = document.getElementById('passwordError');
-  passwordError.innerHTML = "";
   if (password.length < 8 || !password.match(/(?=.*[A-Z])(?=.*\d)/)) {
-    //  passwordError.innerHTML = "A senha deve conter no mínimo 8 caracteres, 1 letra maiúscula e 1 número";
-   //   mostrarPopup("A senha deve conter no mínimo 8 caracteres, 1 letra maiúscula e 1 número"); // Chamando a função mostrarPopup quando há erro na senha
-      alert("A senha deve conter no mínimo 8 caracteres, 1 letra maiúscula e 1 número");
-      return;
+    alert("A senha deve conter no mínimo 8 caracteres, 1 letra maiúscula e 1 número");
+    return false;
   }
 
   // Verificação de confirmação de senha
-  var confirmError = document.getElementById('confirmError');
-  confirmError.innerHTML = "";
   if (password !== confirmPassword) {
-     // confirmError.innerHTML = "As senhas não correspondem";
-      //mostrarPopup("As senhas não correspondem"); // Chamando a função mostrarPopup quando há erro na confirmação de senha
-      alert("As senhas não correspondem");
-      return;
+    alert("As senhas não correspondem");
+    return false;
   }
 
   // Verificação de número
   if (!number.trim()) {
-     // document.getElementById('numberError').innerHTML = "Por favor, informe seu número de telefone";
-     // mostrarPopup("Por favor, informe seu número"); // Chamando a função mostrarPopup quando há erro no número
-      alert("Por favor, informe seu número");
-      return;
-  } else {
-     // document.getElementById('numberError').innerHTML = "";
+    alert("Por favor, informe seu número");
+    return false;
   }
 
-  // Outras verificações ou envio do formulário
-  document.getElementById('registrationForm').submit();
-}
-
-function mostrarPopup(mensagem) {
-  document.getElementById('error-popup-message').textContent = mensagem;
-  document.getElementById('error-popup').style.display = 'block';
-}
-
-function fecharPopup() {
-  document.getElementById('error-popup').style.display = 'none';
+  // Se todas as validações passarem, retorna true
+  return true;
 }
 
 function formatPhoneNumber(input) {
@@ -132,4 +103,65 @@ function toggleHours(day) {
   } else {
     hoursDiv.style.display = 'none';
   }
+}
+
+function preencherEnderecoPorCEP() {
+  var cep = document.getElementById('cep').value;
+  // Remover caracteres não numéricos do CEP
+  cep = cep.replace(/\D/g, '');
+  
+  if (cep.length != 8) {
+    alert("CEP inválido. Por favor, insira um CEP válido.");
+    return;
+  }
+
+  var url = 'https://viacep.com.br/ws/' + cep + '/json/';
+
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        var endereco = JSON.parse(xhr.responseText);
+        document.getElementById('rua').value = endereco.logradouro;
+        document.getElementById('estado').value = endereco.uf;
+        document.getElementById('cidade').value = endereco.localidade;
+        document.getElementById('bairro').value = endereco.bairro;
+      } else {
+        alert("Não foi possível obter o endereço para este CEP. Por favor, verifique o CEP e tente novamente.");
+      }
+    }
+  };
+
+  xhr.open('GET', url);
+  xhr.send();
+}
+
+function mostrarDados() {
+  // Passo 1
+  var nome = document.getElementById('name').value;
+  var telefone = document.getElementById('number').value;
+  var email = document.getElementById('email').value;
+
+  // Passo 2
+  var nomeEmpresa = document.getElementById('companyName').value;
+  var tipoNegocio = document.getElementById('negocio').value;
+  var cep = document.getElementById('cep').value;
+  var rua = document.getElementById('rua').value;
+  var estado = document.getElementById('estado').value;
+  var cidade = document.getElementById('cidade').value;
+  var bairro = document.getElementById('bairro').value;
+  var numero = document.getElementById('numero').value;
+
+  // Exibir os dados na etapa 4
+  document.getElementById('nome-resultado').value = nome;
+  document.getElementById('telefone-resultado').value = telefone;
+  document.getElementById('email-resultado').value = email;
+  document.getElementById('nome-empresa-resultado').value = nomeEmpresa;
+  document.getElementById('tipo-negocio-resultado').value = tipoNegocio;
+  document.getElementById('cep-resultado').value = cep;
+  document.getElementById('rua-resultado').value = rua;
+  document.getElementById('estado-resultado').value = estado;
+  document.getElementById('cidade-resultado').value = cidade;
+  document.getElementById('bairro-resultado').value = bairro;
+  document.getElementById('numero-resultado').value = numero;
 }
