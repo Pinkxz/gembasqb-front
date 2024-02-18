@@ -42,6 +42,76 @@ function validateForm() {
   return true;
 }
 
+function validateStep2() {
+  var companyName = document.getElementById('companyName').value;
+  var negocio = document.getElementById('negocio').value;
+  var cep = document.getElementById('cep').value;
+  var rua = document.getElementById('rua').value;
+  var estado = document.getElementById('estado').value;
+  var cidade = document.getElementById('cidade').value;
+  var bairro = document.getElementById('bairro').value;
+  var numero = document.getElementById('numero').value;
+  var tamanhoEmpresaSelecionado = document.getElementById('tamanhoEmpresaSelecionado').value;
+
+
+  // Verificação do nome da empresa
+  if (!companyName.trim()) {
+    alert("Por favor, informe o nome da empresa");
+    return false;
+  }
+
+  // Verificação do tipo de negócio
+  if (!negocio.trim()) {
+    alert("Por favor, informe o tipo de negócio");
+    return false;
+  }
+
+  // Verificação do CEP
+  if (!cep.trim()) {
+    alert("Por favor, informe o CEP");
+    return false;
+  }
+
+  // Verificação da rua
+  if (!rua.trim()) {
+    alert("Por favor, informe a rua");
+    return false;
+  }
+
+  // Verificação do estado
+  if (!estado.trim()) {
+    alert("Por favor, informe o estado");
+    return false;
+  }
+
+  // Verificação da cidade
+  if (!cidade.trim()) {
+    alert("Por favor, informe a cidade");
+    return false;
+  }
+
+  // Verificação do bairro
+  if (!bairro.trim()) {
+    alert("Por favor, informe o bairro");
+    return false;
+  }
+
+  // Verificação do número
+  if (!numero.trim()) {
+    alert("Por favor, informe o número");
+    return false;
+  }
+
+  // Verificação do tamanho da empresa
+  if (!tamanhoEmpresaSelecionado) {
+    alert("Por favor, selecione o tamanho da empresa");
+    return false;
+  }
+
+  // Se todas as validações passarem, retorna true
+  return true;
+}
+
 function formatPhoneNumber(input) {
     // Remove todos os caracteres não numéricos do número
     var phoneNumber = input.value.replace(/\D/g, '');
@@ -92,6 +162,11 @@ function selectCard(card) {
 
   // Adiciona a classe apenas ao card clicado
   card.classList.add('selected-card');
+
+    // Armazena o tamanho da empresa selecionado no campo oculto
+    var tamanhoEmpresaSelecionado = document.getElementById('tamanhoEmpresaSelecionado');
+    tamanhoEmpresaSelecionado.value = card.dataset.size;
+  
 }
 
 function toggleHours(day) {
@@ -102,6 +177,28 @@ function toggleHours(day) {
     hoursDiv.style.display = 'block';
   } else {
     hoursDiv.style.display = 'none';
+  }
+}
+
+function validateHours() {
+  var days = ["segunda", "terça", "quarta", "quinta", "sexta", "sabádo", "domingo"];
+  var isValid = true;
+
+  days.forEach(function(day) {
+    var checkbox = document.getElementById(day);
+    var startInput = document.getElementById(day + '-inicio');
+    var endInput = document.getElementById(day + '-fim');
+
+    if (checkbox.checked && (!startInput.value || !endInput.value)) {
+      isValid = false;
+      alert("Por favor, preencha os horários de início e término para " + day.charAt(0).toUpperCase() + day.slice(1) + ".");
+      return;
+    }
+  });
+
+  if (isValid) {
+    nextStep();
+    mostrarDados();
   }
 }
 
@@ -151,6 +248,7 @@ function mostrarDados() {
   var cidade = document.getElementById('cidade').value;
   var bairro = document.getElementById('bairro').value;
   var numero = document.getElementById('numero').value;
+  var tipoEmpresaSelecionado = document.querySelector('.dashboard-card.selected')?.dataset.size;
 
   // Exibir os dados na etapa 4
   document.getElementById('nome-resultado').value = nome;
@@ -164,4 +262,5 @@ function mostrarDados() {
   document.getElementById('cidade-resultado').value = cidade;
   document.getElementById('bairro-resultado').value = bairro;
   document.getElementById('numero-resultado').value = numero;
+  document.getElementById('tamanho-empresa-resultado').value = tamanhoEmpresaSelecionado;
 }

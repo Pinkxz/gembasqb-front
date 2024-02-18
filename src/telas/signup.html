@@ -47,10 +47,14 @@
     <input type="password" id="confirm-password" name="confirm-password">
   </div>
   
-  <div class="form-group">
+ <!-- <div class="form-group">
     <button type="button" onclick="if (validateForm()) { nextStep(); }">Próximo</button>
-  </div>
+  </div> -->
   
+  <div class="form-group">
+    <button onclick="nextStep()">Próximo</button>
+  </div>
+
   <div class="form-options">
     <a href="login.html">Já tem uma conta? Faça login</a>
   </div>
@@ -132,12 +136,13 @@
             <h1>Redes</h1>
             <p>Meu negócio é uma rede ou franquia.</p>
           </div>
-          
+          <input type="hidden" id="tamanhoEmpresaSelecionado" name="tamanhoEmpresaSelecionado">
         </div>
     </section>
+
     <div class="form-group">
       <button onclick="prevStep()">Anterior</button><br><br>
-      <button onclick="nextStep()">Próximo</button>
+      <button onclick="if (validateStep2()) { nextStep(); }">Próximo</button>
     </div>
   </div>
 </div>
@@ -212,7 +217,7 @@
 
     <div class="form-group">
       <button onclick="prevStep()">Anterior</button><br><br>
-      <button onclick="nextStep(); mostrarDados()">Próximo</button>
+      <button onclick="validateHours()">Próximo</button>
     </div>
   </div>
 </div>
@@ -242,6 +247,12 @@
       <label for="tipo-negocio-resultado">Tipo de Negócio:</label>
       <input type="text" id="tipo-negocio-resultado" readonly>
     </div>
+
+    <div class="form-group">
+      <label for="tamanho-empresa-resultado">Tamanho da Empresa:</label>
+      <input type="text" id="tamanho-empresa-resultado" readonly>
+    </div>
+    
     <div class="form-group">
       <label for="cep-resultado">CEP:</label>
       <input type="text" id="cep-resultado" readonly>
@@ -269,7 +280,7 @@
     
     <div class="form-group">
       <button onclick="prevStep()">Anterior</button><br><br>
-      <button onclick="validateForm()">Cadastrar</button>
+      <button onclick="cadastrar()">Cadastrar</button>
     </div>
   </div>
 </div>
