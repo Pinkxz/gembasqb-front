@@ -122,3 +122,14 @@ function selectCard(card) {
   // Adiciona a classe apenas ao card clicado
   card.classList.add('selected-card');
 }
+
+function toggleHours(day) {
+  var checkbox = document.getElementById(day);
+  var hoursDiv = document.getElementById(day + '-hours');
+
+  if (checkbox.checked) {
+    hoursDiv.style.display = 'block';
+  } else {
+    hoursDiv.style.display = 'none';
+  }
+}

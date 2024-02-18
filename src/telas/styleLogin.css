@@ -171,3 +171,32 @@
   box-shadow: 0 0 20px rgb(0, 17, 255);
   transform: scale(1.03);
 } 
+
+.day {
+  margin-bottom: 10px;
+}
+
+.day label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.day input[type="checkbox"] {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.day input[type="text"] {
+  width: 120px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+
+.day input[type="text"]:focus {
+  outline: none;
+  border-color: #66afe9;
+  box-shadow: 0 0 5px #66afe9;
+}
