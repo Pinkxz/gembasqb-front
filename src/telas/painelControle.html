@@ -87,44 +87,44 @@
             </div>
         </div>
 
-    <!-- Modal -->
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div class="form-container">
-                <!-- Etapa 1: Seleção de cliente -->
-                <div id="etapaCliente" class="etapa">
-                    <h2>Selecione o cliente</h2>
-                    <!-- Conteúdo da seleção de cliente -->
-                    <!-- Exemplo: opções para cliente cadastrado ou anônimo -->
-                </div>
-    
-                <!-- Etapa 2: Seleção de colaborador -->
-                <div id="etapaColaborador" class="etapa" style="display: none;">
-                    <h2>Selecione o colaborador</h2>
-                    <!-- Conteúdo da seleção de colaborador -->
-                </div>
-    
-                <!-- Etapa 3: Seleção de serviços -->
-                <div id="etapaServicos" class="etapa" style="display: none;">
-                    <h2>Selecione os serviços desejados</h2>
-                    <!-- Conteúdo da seleção de serviços -->
-                </div>
-    
-                <!-- Etapa 4: Agendamento ou serviço no momento -->
-                <div id="etapaAgendamento" class="etapa" style="display: none;">
-                    <h2>Escolha entre agendar ou fazer no momento</h2>
-                    <!-- Conteúdo da escolha de agendamento ou serviço no momento -->
-                </div>
-    
-                <!-- Botões de navegação entre etapas -->
-                <div class="modal-buttons">
-                    <button onclick="avancarEtapa()">Avançar</button>
-                    <button onclick="fecharCaixa()">Voltar</button>
-                </div>
+<!-- Modal -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="form-container">
+            <!-- Etapa 1: Seleção de cliente -->
+            <div id="step1" class="step">
+                <h2>Selecione o cliente</h2>
+                <!-- Conteúdo da seleção de cliente -->
+                <!-- Exemplo: opções para cliente cadastrado ou anônimo -->
+            </div>
+
+            <!-- Etapa 2: Seleção de colaborador -->
+            <div id="step2" class="step" style="display: none;">
+                <h2>Selecione o colaborador</h2>
+                <!-- Conteúdo da seleção de colaborador -->
+            </div>
+
+            <!-- Etapa 3: Seleção de serviços -->
+            <div id="step3" class="step" style="display: none;">
+                <h2>Selecione os serviços desejados</h2>
+                <!-- Conteúdo da seleção de serviços -->
+            </div>
+
+            <!-- Etapa 4: Agendamento ou serviço no momento -->
+            <div id="step4" class="step" style="display: none;">
+                <h2>Escolha entre agendar ou fazer no momento</h2>
+                <!-- Conteúdo da escolha de agendamento ou serviço no momento -->
+            </div>
+
+            <!-- Botões de navegação entre etapas -->
+            <div class="modal-buttons">
+                <button onclick="prevStep()">Voltar</button>
+                <button onclick="nextStep()">Avançar</button>
             </div>
         </div>
     </div>
+</div>
 
 
 </body>

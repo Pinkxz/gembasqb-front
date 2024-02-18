@@ -64,27 +64,28 @@ function closeModal() {
 
 
 
-var etapaAtual = 1;
+let currentStep = 1;
 
-function avancarEtapa() {
-    var etapaAtualDiv = document.getElementById("etapa" + etapaAtual);
-    etapaAtualDiv.style.display = "none";
-    etapaAtual++;
-    var proximaEtapaDiv = document.getElementById("etapa" + etapaAtual);
-    if (proximaEtapaDiv) {
-        proximaEtapaDiv.style.display = "block";
-    }
+function nextStep() {
+  console.log('Next step called');
+  if (currentStep < 4) {
+    console.log('Hiding step', currentStep);
+    document.getElementById(`step${currentStep}`).style.display = 'none';
+    currentStep++;
+    console.log('Showing step', currentStep);
+    document.getElementById(`step${currentStep}`).style.display = 'block';
+  }
 }
 
-function voltarEtapa() {
-    if (etapaAtual === 1) return;
-    var etapaAtualDiv = document.getElementById("etapa" + etapaAtual);
-    etapaAtualDiv.style.display = "none";
-    etapaAtual--;
-    var etapaAnteriorDiv = document.getElementById("etapa" + etapaAtual);
-    if (etapaAnteriorDiv) {
-        etapaAnteriorDiv.style.display = "block";
-    }
+function prevStep() {
+  console.log('Previous step called');
+  if (currentStep > 1) {
+    console.log('Hiding step', currentStep);
+    document.getElementById(`step${currentStep}`).style.display = 'none';
+    currentStep--;
+    console.log('Showing step', currentStep);
+    document.getElementById(`step${currentStep}`).style.display = 'block';
+  }
 }
 /*========================================================================Funcionamento Front-End acima==================================================*/
 
