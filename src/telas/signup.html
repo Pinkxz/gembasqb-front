@@ -24,7 +24,7 @@
   <h1>Dados de Cadastro</h1>
   <div class="form-group">
     <label for="name">Nome:</label>
-    <input type="text" id="name" name="name">
+    <input type="text" id="name" name="name" placeholder="Ex:João">
   </div>
 
   <div class="form-group">
@@ -34,7 +34,7 @@
 
   <div class="form-group">
     <label for="email">Email:</label>
-    <input type="email" id="email" name="email">
+    <input type="email" id="email" name="email" placeholder="Ex: joao@gmail.com">
   </div>
 
   <div class="form-group">
@@ -65,7 +65,12 @@
     <h1>Dados da Empresa</h1>
     <div class="form-group">
       <label for="companyName">Nome da Empresa:</label>
-      <input type="text" id="companyName" name="companyName">
+      <input type="text" id="companyName" name="companyName" placeholder="EX: META">
+    </div>
+
+    <div class="form-group">
+      <label for="negocio">Tipo de Negócio:</label>
+      <input type="text" id="negocio" name="negocio" placeholder="EX: Barbearia">
     </div>
 
     <div class="form-group">
@@ -106,19 +111,22 @@
       <button onclick="nextStep()">Próximo</button>
     </div>
   </div>
-</div>
+</div><!--Fim segunda etapa-->
 
 
 <div id="step3" class="step" style="display: none;">
   <!-- Conteúdo do Passo 3 -->
-<div class="form-container">
-  <div class="form-group">
-    <button onclick="prevStep()">Anterior</button><br><br>
-    <button onclick="nextStep()">Próximo</button>
-  </div>
-</div>
-  
+  <div class="form-container">
 
+
+
+
+    <div class="form-group">
+      <button onclick="prevStep()">Anterior</button><br><br>
+      <button onclick="nextStep()">Próximo</button>
+    </div>
+  </div>  
+</div>
 
 <div id="step4" class="step" style="display: none;">
   <!-- Conteúdo do Passo 4 -->
