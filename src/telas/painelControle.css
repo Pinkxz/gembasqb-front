@@ -358,3 +358,23 @@ header {
     max-height: 500px; /* Altura máxima do contêiner */
     overflow: auto; /* Adiciona barra de rolagem vertical quando necessário */
 }
+
+.clientes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+}
+
+.cliente {
+    cursor: pointer;
+}
+
+.cliente img {
+    width: 100%;
+    height: auto;
+}
+
+.selected-card {
+    box-shadow: 0 0 20px rgb(0, 17, 255);
+    transform: scale(1.03);
+  } 

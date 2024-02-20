@@ -1,12 +1,12 @@
 // Função para abrir a modal
-function openModal() {
-    document.getElementById("myModal").style.display = "block";
-}
+    function openModal() {
+        document.getElementById("myModal").style.display = "block";
+    }
 
-// Função para fechar a modal
-function closeModal() {
-    document.getElementById("myModal").style.display = "none";
-}
+    // Função para fechar a modal
+    function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+    }
 
 function createSpan(text) {
     var span = document.createElement("span");

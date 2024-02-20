@@ -92,36 +92,60 @@
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
         <div class="form-container">
+        
             <!-- Etapa 1: Seleção de cliente -->
             <div id="step1" class="step">
                 <h2>Selecione o cliente</h2>
-                <!-- Conteúdo da seleção de cliente -->
-                <!-- Exemplo: opções para cliente cadastrado ou anônimo -->
-            </div>
+                <!-- Grid de clientes -->
+                <div id="clientes-grid" class="clientes-grid"></div>
 
+                <!-- Botões de navegação entre etapas -->
+                <div class="modal-buttons">
+                    <button onclick="prevStep()">Voltar</button>
+                    <button onclick="nextStep()">Avançar</button>
+                </div>
+            </div>
+            
             <!-- Etapa 2: Seleção de colaborador -->
             <div id="step2" class="step" style="display: none;">
                 <h2>Selecione o colaborador</h2>
                 <!-- Conteúdo da seleção de colaborador -->
+                <div id="colaboradores-grid" class="colaboradores-grid"></div>
+                <script>
+                    preencherGridColaboradores();
+                </script>
+                
+                            <!-- Botões de navegação entre etapas -->
+                <div class="modal-buttons">
+                    <button onclick="prevStep()">Voltar</button>
+                    <button onclick="nextStep()">Avançar</button>
+                </div>
             </div>
 
             <!-- Etapa 3: Seleção de serviços -->
             <div id="step3" class="step" style="display: none;">
                 <h2>Selecione os serviços desejados</h2>
                 <!-- Conteúdo da seleção de serviços -->
+
+                            <!-- Botões de navegação entre etapas -->
+                <div class="modal-buttons">
+                    <button onclick="prevStep()">Voltar</button>
+                    <button onclick="nextStep()">Avançar</button>
+                </div>
             </div>
 
             <!-- Etapa 4: Agendamento ou serviço no momento -->
             <div id="step4" class="step" style="display: none;">
                 <h2>Escolha entre agendar ou fazer no momento</h2>
                 <!-- Conteúdo da escolha de agendamento ou serviço no momento -->
+
+                            <!-- Botões de navegação entre etapas -->
+                <div class="modal-buttons">
+                    <button onclick="prevStep()">Voltar</button>
+                    <button onclick="abrirComanda()">Finalizar Comanda</button>
+                </div>
             </div>
 
-            <!-- Botões de navegação entre etapas -->
-            <div class="modal-buttons">
-                <button onclick="prevStep()">Voltar</button>
-                <button onclick="nextStep()">Avançar</button>
-            </div>
         </div>
     </div>
 </div>
