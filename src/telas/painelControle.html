@@ -122,29 +122,44 @@
                 </div>
             </div>
 
-            <!-- Etapa 3: Seleção de serviços -->
-            <div id="step3" class="step" style="display: none;">
-                <h2>Selecione os serviços desejados</h2>
-                <!-- Conteúdo da seleção de serviços -->
-
-                            <!-- Botões de navegação entre etapas -->
-                <div class="modal-buttons">
-                    <button onclick="prevStep()">Voltar</button>
-                    <button onclick="nextStep()">Avançar</button>
+                <!-- Etapa 3: Seleção de serviços -->
+                <div id="step3" class="step" style="display: none;">
+                    <h2>Selecione os serviços desejados</h2>
+                    <!-- Conteúdo da seleção de serviços -->
+                    <div id="container-servicos">
+                        <h3>Serviços Disponíveis</h3>
+                        <div id="servicos"></div>
+                    </div>
+                    <script>
+                        addServices();
+                    </script>
+    
+                    <!-- Botões de navegação entre etapas -->
+                    <div class="modal-buttons">
+                        <button onclick="prevStep()">Voltar</button>
+                        <button onclick="nextStep()">Avançar</button>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Etapa 4: Agendamento ou serviço no momento -->
-            <div id="step4" class="step" style="display: none;">
-                <h2>Escolha entre agendar ou fazer no momento</h2>
-                <!-- Conteúdo da escolha de agendamento ou serviço no momento -->
 
-                            <!-- Botões de navegação entre etapas -->
-                <div class="modal-buttons">
-                    <button onclick="prevStep()">Voltar</button>
-                    <button onclick="abrirComanda()">Finalizar Comanda</button>
-                </div>
-            </div>
+<!-- Etapa 4: Agendamento ou serviço no momento -->
+<div id="step4" class="step" style="display: none;">
+    <h2>Escolha entre agendar ou fazer no momento</h2>
+    <!-- Conteúdo da escolha de agendamento ou serviço no momento -->
+    <form id="choiceForm">
+        <input type="radio" id="fazerAgora" name="escolha" value="fazerAgora">
+        <label for="fazerAgora">Fazer agora</label><br>
+        <input type="radio" id="agendar" name="escolha" value="agendar">
+        <label for="agendar">Agendar</label><br><br>
+    </form>
+    
+    <!-- Botões de navegação entre etapas -->
+    <div class="modal-buttons">
+        <button onclick="prevStep()">Voltar</button>
+        <button onclick="processarEscolha()">Próximo</button>
+    </div>
+</div>
+
 
         </div>
     </div>

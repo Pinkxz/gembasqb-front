@@ -325,3 +325,60 @@ function selecionarColaborador(id) {
       card.classList.add('selected-card');
   }
 }
+
+
+// Função para adicionar dinamicamente os serviços na terceira etapa do modal
+function addServices() {
+    var servicosContainer = document.getElementById("servicos");
+
+    // Limpa o conteúdo atual para evitar duplicatas
+    servicosContainer.innerHTML = "";
+
+    // Lista de serviços
+    var listaDeServicos = [
+        "Corte de Cabelo",
+        "Manicure",
+        "Pedicure",
+        "Maquiagem",
+        "Maquiagem",
+        "Maquiagem"
+        // Adicione mais serviços conforme necessário
+    ];
+
+    // Adiciona cada serviço ao contêiner de serviços
+    listaDeServicos.forEach(function(service) {
+        var checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.name = "servico";
+        checkbox.value = service;
+        
+        var label = document.createElement("label");
+        label.appendChild(document.createTextNode(service));
+
+        var br = document.createElement("br");
+
+        servicosContainer.appendChild(checkbox);
+        servicosContainer.appendChild(label);
+        servicosContainer.appendChild(br);
+    });
+}
+
+// Chamada da função para adicionar os serviços
+addServices();
+
+function processarEscolha() {
+    var escolha = document.querySelector('input[name="escolha"]:checked').value;
+    if (escolha === "fazerAgora") {
+        abrirComanda();
+    } else if (escolha === "agendar") {
+        // Chamar função para abrir mais um passo do HTML
+        // Por exemplo:
+        abrirProximaEtapa();
+    }
+}
+
+function abrirProximaEtapa() {
+    // Código para exibir a próxima etapa do HTML
+    // Por exemplo:
+    document.getElementById("step5").style.display = "block";
+}
