@@ -373,12 +373,28 @@ function processarEscolha() {
     } else if (escolha === "agendar") {
         // Chamar função para abrir mais um passo do HTML
         // Por exemplo:
-        abrirProximaEtapa();
+        nextStep();
     }
 }
 
-function abrirProximaEtapa() {
-    // Código para exibir a próxima etapa do HTML
-    // Por exemplo:
-    document.getElementById("step5").style.display = "block";
-}
+    // Função para processar o agendamento
+    function processarAgendamento() {
+        // Obter a data selecionada
+        var dataSelecionada = $("#datepicker").datepicker("getDate");
+        // Obter o horário selecionado
+        var horarioSelecionado = $("#timepicker").val();
+
+        // Verificar se a data e o horário foram selecionados
+        if (dataSelecionada && horarioSelecionado) {
+            // Aqui você pode fazer o que for necessário com a data e o horário selecionados
+            // Por exemplo, enviar o pedido de agendamento para o servidor
+            // e realizar outras operações conforme necessário
+
+            // Exemplo de como você pode prosseguir após a seleção da data e do horário:
+            alert("Comanda agendada para: " + dataSelecionada.toLocaleDateString() + " às " + horarioSelecionado);
+            // Aqui você pode prosseguir para a próxima etapa ou realizar outras ações
+        } else {
+            // Se a data ou o horário não foram selecionados, exiba uma mensagem de erro
+            alert("Por favor, selecione uma data e um horário de agendamento.");
+        }
+    }

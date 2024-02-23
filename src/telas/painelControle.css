@@ -398,3 +398,24 @@ header {
 #servicos input[type="checkbox"] {
     margin-right: 10px;
 }
+
+.container2 {
+    width: calc(100% - 20px); /* 100% da largura da tela menos 20 pixels para margem */
+    margin-top: 10px; /* Espaçamento superior */
+    border: 1px solid #ccc; /* Borda para visualização */
+    color: #000000;
+}
+
+/* Estilo para o header2 */
+.header2 {
+    display: grid; /* Layout em grade para os itens do header */
+    grid-template-columns: repeat(6, 1fr); /* Cria 6 colunas com largura igual */
+    background-color: #f0f0f0; /* Cor de fundo */
+    padding: 10px; /* Preenchimento interno */
+    font-weight: bold; /* Texto em negrito */
+}
+
+/* Estilo para as células do header */
+.header2 span {
+    text-align: center; /* Centraliza o texto horizontalmente */
+}
