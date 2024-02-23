@@ -177,18 +177,6 @@ function closeModal() {
     document.getElementById('step' + step).style.display = 'block';
   }
   
-  // Função para abrir a comanda após a última etapa
-  function abrirComanda() {
-    var currentStep = getCurrentStep();
-    
-    // Valida a etapa atual antes de abrir a comanda
-    var isValid = validateStep(currentStep);
-    
-    // Se a etapa atual for válida, procede para abrir a comanda
-    if (isValid) {
-      // Coloque aqui o código para abrir a comanda
-    }
-  }
 /*========================================================================Funcionamento Front-End acima==================================================*/
 
 function preencherClientesSelect() {
@@ -382,6 +370,41 @@ function processarEscolha() {
         nextStep();
     }
 }
+
+    function abrirComanda(){
+            // Extrair dados do cliente selecionado
+            var clienteSelecionado = $("#step1 .selected-card").text().trim();
+            
+            // Extrair dados do colaborador selecionado
+            var colaboradorSelecionado = $("#step2 .selected-card").text().trim();
+            
+            // Extrair serviços selecionados
+            var servicosSelecionados = [];
+            $("#step3 input[type='checkbox']:checked").each(function() {
+                servicosSelecionados.push($(this).val());
+            });
+            
+            // Verificar se é agendamento ou serviço no momento
+            var opcaoSelecionada = $("input[name='escolha']:checked").val();
+            
+            // Criar objeto de comanda
+            var comanda = {
+                numero: Math.floor(Math.random() * 1000) + 1, // Número de comanda aleatório
+                cliente: clienteSelecionado,
+                servicos: servicosSelecionados,
+                colaborador: colaboradorSelecionado,
+                //data: dataSelecionada.toLocaleDateString(),
+                //horario: horarioSelecionado,
+                status: opcaoSelecionada === "fazerAgora" ? "Aberto" : "Concluído",
+                total: calcularTotal(servicosSelecionados) // Função para calcular o total com base nos serviços selecionados
+            };
+            
+            // Adicionar comanda ao container
+            closeModal();
+            adicionarComandaAoContainer(comanda);
+
+    }
+
 
     function processarAgendamento() {
         var dataSelecionada = $("#datepicker").datepicker("getDate");
