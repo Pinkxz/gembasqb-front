@@ -419,3 +419,14 @@ header {
 .header2 span {
     text-align: center; /* Centraliza o texto horizontalmente */
 }
+
+.comanda span {
+    display: inline-block;
+    width: calc(100% / 7); /* Divide o espaço igualmente em 6 colunas para cada item */
+    text-align: center;
+    padding: 5px;
+}
+
+#serviceContainer {
+    margin-top: 20px;
+}

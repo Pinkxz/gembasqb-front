@@ -371,13 +371,11 @@ function processarEscolha() {
     if (escolha === "fazerAgora") {
         abrirComanda();
     } else if (escolha === "agendar") {
-        // Chamar função para abrir mais um passo do HTML
-        // Por exemplo:
         nextStep();
     }
 }
 
-    // Função para processar o agendamento
+   /* // Função para processar o agendamento
     function processarAgendamento() {
         // Obter a data selecionada
         var dataSelecionada = $("#datepicker").datepicker("getDate");
@@ -392,9 +390,86 @@ function processarEscolha() {
 
             // Exemplo de como você pode prosseguir após a seleção da data e do horário:
             alert("Comanda agendada para: " + dataSelecionada.toLocaleDateString() + " às " + horarioSelecionado);
-            // Aqui você pode prosseguir para a próxima etapa ou realizar outras ações
+                 // Obter os dados selecionados
+            
         } else {
             // Se a data ou o horário não foram selecionados, exiba uma mensagem de erro
             alert("Por favor, selecione uma data e um horário de agendamento.");
         }
+    } */
+
+    function processarAgendamento() {
+        var dataSelecionada = $("#datepicker").datepicker("getDate");
+        var horarioSelecionado = $("#timepicker").val();
+        
+        if (dataSelecionada && horarioSelecionado) {
+            // Extrair dados do cliente selecionado
+            var clienteSelecionado = $("#step1 .selected-card").text().trim();
+            
+            // Extrair dados do colaborador selecionado
+            var colaboradorSelecionado = $("#step2 .selected-card").text().trim();
+            
+            // Extrair serviços selecionados
+            var servicosSelecionados = [];
+            $("#step3 input[type='checkbox']:checked").each(function() {
+                servicosSelecionados.push($(this).val());
+            });
+            
+            // Verificar se é agendamento ou serviço no momento
+            var opcaoSelecionada = $("input[name='escolha']:checked").val();
+            
+            // Criar objeto de comanda
+            var comanda = {
+                numero: Math.floor(Math.random() * 1000) + 1, // Número de comanda aleatório
+                cliente: clienteSelecionado,
+                servicos: servicosSelecionados,
+                colaborador: colaboradorSelecionado,
+                data: dataSelecionada.toLocaleDateString(),
+                horario: horarioSelecionado,
+                status: opcaoSelecionada === "agendar" ? "Agendado" : "Em andamento",
+                total: calcularTotal(servicosSelecionados) // Função para calcular o total com base nos serviços selecionados
+            };
+            
+            // Adicionar comanda ao container
+            closeModal();
+            adicionarComandaAoContainer(comanda);
+            
+            // Exibir mensagem de sucesso
+            alert("Comanda agendada para: " + comanda.data + " às " + comanda.horario);
+        } else {
+            alert("Por favor, selecione uma data e um horário de agendamento.");
+        }
     }
+    
+    // Função para calcular o total com base nos serviços selecionados
+    function calcularTotal(servicosSelecionados) {
+        // Lógica para calcular o total com base nos serviços selecionados
+        return servicosSelecionados.length * 10; // Por exemplo, valor fixo de R$10 por serviço
+    }
+    
+
+function adicionarComandaAoContainer(comanda) {
+    var containerComandas = document.getElementById("serviceContainer");
+    
+    // Criar elementos HTML para a nova comanda
+    var comandaElement = document.createElement("div");
+    comandaElement.classList.add("comanda");
+    
+    var elementos = [
+        comanda.numero,
+        comanda.cliente,
+        comanda.servicos.join(", "),
+        comanda.colaborador,
+        comanda.status,
+        "R$" + comanda.total.toFixed(2) // Formata o total com duas casas decimais
+    ];
+    
+    elementos.forEach(function(valor) {
+        var span = document.createElement("span");
+        span.textContent = valor;
+        comandaElement.appendChild(span);
+    });
+    
+    // Adicionar nova comanda ao container
+    containerComandas.appendChild(comandaElement);
+}

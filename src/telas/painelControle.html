@@ -96,117 +96,116 @@
         </div>
 
 
-<!-- Modal -->
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <div class="form-container">
-        
-            <!-- Etapa 1: Seleção de cliente -->
-            <div id="step1" class="step">
-                <h2>Selecione o cliente</h2>
-                <!-- Grid de clientes -->
-                <div id="clientes-grid" class="clientes-grid"></div>
-
-                <!-- Botões de navegação entre etapas -->
-                <div class="modal-buttons">
-                    <button onclick="prevStep()">Voltar</button>
-                    <button onclick="nextStep()">Avançar</button>
-                </div>
-            </div>
-            
-            <!-- Etapa 2: Seleção de colaborador -->
-            <div id="step2" class="step" style="display: none;">
-                <h2>Selecione o colaborador</h2>
-                <!-- Conteúdo da seleção de colaborador -->
-                <div id="colaboradores-grid" class="colaboradores-grid"></div>
-                <script>
-                    preencherGridColaboradores();
-                </script>
+        <!-- Modal -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <div class="form-container">
                 
+                    <!-- Etapa 1: Seleção de cliente -->
+                    <div id="step1" class="step">
+                        <h2>Selecione o cliente</h2>
+                        <!-- Grid de clientes -->
+                        <div id="clientes-grid" class="clientes-grid"></div>
+
+                        <!-- Botões de navegação entre etapas -->
+                        <div class="modal-buttons">
+                            <button onclick="prevStep()">Voltar</button>
+                            <button onclick="nextStep()">Avançar</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Etapa 2: Seleção de colaborador -->
+                    <div id="step2" class="step" style="display: none;">
+                        <h2>Selecione o colaborador</h2>
+                        <!-- Conteúdo da seleção de colaborador -->
+                        <div id="colaboradores-grid" class="colaboradores-grid"></div>
+                        <script>
+                            preencherGridColaboradores();
+                        </script>
+                        
+                                    <!-- Botões de navegação entre etapas -->
+                        <div class="modal-buttons">
+                            <button onclick="prevStep()">Voltar</button>
+                            <button onclick="nextStep()">Avançar</button>
+                        </div>
+                    </div>
+
+                        <!-- Etapa 3: Seleção de serviços -->
+                        <div id="step3" class="step" style="display: none;">
+                            <h2>Selecione os serviços desejados</h2>
+                            <!-- Conteúdo da seleção de serviços -->
+                            <div id="container-servicos">
+                                <h3>Serviços Disponíveis</h3>
+                                <div id="servicos"></div>
+                            </div>
+                            <script>
+                                addServices();
+                            </script>
+            
                             <!-- Botões de navegação entre etapas -->
-                <div class="modal-buttons">
-                    <button onclick="prevStep()">Voltar</button>
-                    <button onclick="nextStep()">Avançar</button>
-                </div>
-            </div>
+                            <div class="modal-buttons">
+                                <button onclick="prevStep()">Voltar</button>
+                                <button onclick="nextStep()">Avançar</button>
+                            </div>
+                        </div>
 
-                <!-- Etapa 3: Seleção de serviços -->
-                <div id="step3" class="step" style="display: none;">
-                    <h2>Selecione os serviços desejados</h2>
-                    <!-- Conteúdo da seleção de serviços -->
-                    <div id="container-servicos">
-                        <h3>Serviços Disponíveis</h3>
-                        <div id="servicos"></div>
+
+                    <!-- Etapa 4: Agendamento ou serviço no momento -->
+                    <div id="step4" class="step" style="display: none;">
+                        <h2>Escolha entre agendar ou fazer no momento</h2>
+                    <!-- Conteúdo da escolha de agendamento ou serviço no momento -->
+                        <form id="choiceForm">
+                            <input type="radio" id="fazerAgora" name="escolha" value="fazerAgora">
+                            <label for="fazerAgora">Fazer agora</label><br>
+                            <input type="radio" id="agendar" name="escolha" value="agendar">
+                            <label for="agendar">Agendar</label><br><br>
+                        </form>
+            
+                        <!-- Botões de navegação entre etapas -->
+                        <div class="modal-buttons">
+                            <button onclick="prevStep()">Voltar</button>
+                            <button onclick="processarEscolha()">Próximo</button>
+                        </div>
                     </div>
-                    <script>
-                        addServices();
-                    </script>
-    
-                    <!-- Botões de navegação entre etapas -->
-                    <div class="modal-buttons">
-                        <button onclick="prevStep()">Voltar</button>
-                        <button onclick="nextStep()">Avançar</button>
+
+                    <div id="step5" class="step" style="display: none;">
+                        <h2>Escolha a data de agendamento</h2>
+                        <input type="text" id="datepicker" placeholder="Selecione a data"><br><br>
+                        <script>
+                            // Quando o documento estiver pronto
+                            $(document).ready(function() {
+                                // Inicializa o DatePicker
+                                $("#datepicker").datepicker({
+                                    minDate: 0, // Define a data mínima como a data atual
+                                    onSelect: function(selectedDate) {
+                                        // Chamada de função ou ação quando uma data é selecionada
+                                    }
+                                });
+
+                                // Inicializa o TimePicker
+                                $("#timepicker").timepicker({
+                                    timeFormat: 'HH:mm', // Formato de exibição do horário
+                                    interval: 15, // Intervalo de tempo entre as opções (em minutos)
+                                    scrollbar: true, // Exibe a barra de rolagem para horários
+                                    minTime: '8:00', // Define o horário mínimo
+                                    maxTime: '18:00', // Define o horário máximo
+                                });
+                            });
+                        </script>                
+                            <label for="timepicker">Selecione o horário:</label>
+                            <input type="text" id="timepicker">
+                        <!-- Botões de navegação entre etapas -->
+                        <div class="modal-buttons">
+                            <button onclick="prevStep()">Voltar</button>
+                            <button onclick="processarAgendamento()">Próximo</button>
+                        </div>
                     </div>
-                </div>
 
 
-            <!-- Etapa 4: Agendamento ou serviço no momento -->
-            <div id="step4" class="step" style="display: none;">
-                <h2>Escolha entre agendar ou fazer no momento</h2>
-            <!-- Conteúdo da escolha de agendamento ou serviço no momento -->
-                <form id="choiceForm">
-                    <input type="radio" id="fazerAgora" name="escolha" value="fazerAgora">
-                    <label for="fazerAgora">Fazer agora</label><br>
-                    <input type="radio" id="agendar" name="escolha" value="agendar">
-                    <label for="agendar">Agendar</label><br><br>
-                </form>
-    
-                <!-- Botões de navegação entre etapas -->
-                <div class="modal-buttons">
-                    <button onclick="prevStep()">Voltar</button>
-                    <button onclick="processarEscolha()">Próximo</button>
                 </div>
             </div>
-
-            <div id="step5" class="step" style="display: none;">
-                <h2>Escolha a data de agendamento</h2>
-                <input type="text" id="datepicker" placeholder="Selecione a data"><br><br>
-                <script>
-                    // Quando o documento estiver pronto
-                      $(document).ready(function() {
-                        // Inicializa o DatePicker
-                        $("#datepicker").datepicker({
-                            minDate: 0, // Define a data mínima como a data atual
-                            onSelect: function(selectedDate) {
-                                // Chamada de função ou ação quando uma data é selecionada
-                            }
-                        });
-
-                        // Inicializa o TimePicker
-                        $("#timepicker").timepicker({
-                            timeFormat: 'HH:mm', // Formato de exibição do horário
-                            interval: 15, // Intervalo de tempo entre as opções (em minutos)
-                            scrollbar: true, // Exibe a barra de rolagem para horários
-                            minTime: '8:00', // Define o horário mínimo
-                            maxTime: '18:00', // Define o horário máximo
-                        });
-                    });
-                </script>                
-                    <label for="timepicker">Selecione o horário:</label>
-                    <input type="text" id="timepicker">
-                <!-- Botões de navegação entre etapas -->
-                <div class="modal-buttons">
-                    <button onclick="prevStep()">Voltar</button>
-                    <button onclick="processarAgendamento()">Próximo</button>
-                </div>
-            </div>
-
-
         </div>
     </div>
-</div>
-
-
 </body>
 </html>
