@@ -374,6 +374,21 @@ header {
     height: auto;
 }
 
+.colaborador-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+}
+
+.colaborador {
+    cursor: pointer;
+}
+
+.colaborador img {
+    width: 100%;
+    height: auto;
+}
+
 .selected-card {
     box-shadow: 0 0 20px rgb(0, 17, 255);
     transform: scale(1.03);

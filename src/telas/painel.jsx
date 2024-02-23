@@ -275,32 +275,40 @@ function selecionarCliente(id) {
 }
 
 var colaboradores = [
-  { "id": 1, "nome": "Colaborador 1", "foto": "G-icon.png" },
-  { "id": 2, "nome": "Colaborador 2", "foto": "perfil.png" },
-  { "id": 3, "nome": "Colaborador 3", "foto": "gemba-logo.png" }
+  { "id": 1, "nome": "Colabsexorador 1", "foto": "G-icon.png" },
+  { "id": 2, "nome": "Cosexoor 2", "foto": "perfil.png" },
+  { "id": 3, "nome": "Colabsexorador 3", "foto": "gemba-logo.png" }
 ];
 
 // Função para preencher o grid de colaboradores na Etapa 1 
+// Função para preencher o grid de colaboradores na Etapa 1 
 function preencherGridColaboradores() {
-  var grid = document.getElementById('colaboradores-grid');
-  colaboradores.forEach(function(colaborador) {
-      var colaboradorDiv = document.createElement('div');
-      colaboradorDiv.classList.add('colaborador');
-      colaboradorDiv.id = 'colaborador-' + colaborador.id; // Atribui um ID único baseado no ID do colaborador
-      var img = document.createElement('img');
-      if (colaborador.foto) {
-          img.src = colaborador.foto;
-      } else {
-          img.src = 'caminho/para/imagem-padrao.jpg';
-      }
-      img.alt = colaborador.nome;
-      img.onclick = function() {
-          selecionarColaborador(colaborador.id);
-      };
-      colaboradorDiv.appendChild(img);
-      grid.appendChild(colaboradorDiv);
-  });
-}
+    var grid = document.getElementById('colaboradores-grid');
+    colaboradores.forEach(function(colaborador) {
+        var colaboradorDiv = document.createElement('div');
+        colaboradorDiv.classList.add('colaborador');
+        colaboradorDiv.id = 'colaborador-' + colaborador.id; // Atribui um ID único baseado no ID do colaborador
+        var img = document.createElement('img');
+        if (colaborador.foto) {
+            img.src = colaborador.foto;
+        } else {
+            img.src = 'caminho/para/imagem-padrao.jpg';
+        }
+        img.alt = colaborador.nome;
+        img.onclick = function() {
+            selecionarColaborador(colaborador.id);
+        };
+        colaboradorDiv.appendChild(img);
+  
+        // Criar um parágrafo para o nome do colaborador
+        var nomeParagrafo = document.createElement('p');
+        nomeParagrafo.textContent = colaborador.nome;
+        colaboradorDiv.appendChild(nomeParagrafo);
+  
+        grid.appendChild(colaboradorDiv);
+    });
+  }
+  
 
 // Função para selecionar um colaborador
 function selecionarColaborador(id) {
@@ -374,29 +382,6 @@ function processarEscolha() {
         nextStep();
     }
 }
-
-   /* // Função para processar o agendamento
-    function processarAgendamento() {
-        // Obter a data selecionada
-        var dataSelecionada = $("#datepicker").datepicker("getDate");
-        // Obter o horário selecionado
-        var horarioSelecionado = $("#timepicker").val();
-
-        // Verificar se a data e o horário foram selecionados
-        if (dataSelecionada && horarioSelecionado) {
-            // Aqui você pode fazer o que for necessário com a data e o horário selecionados
-            // Por exemplo, enviar o pedido de agendamento para o servidor
-            // e realizar outras operações conforme necessário
-
-            // Exemplo de como você pode prosseguir após a seleção da data e do horário:
-            alert("Comanda agendada para: " + dataSelecionada.toLocaleDateString() + " às " + horarioSelecionado);
-                 // Obter os dados selecionados
-            
-        } else {
-            // Se a data ou o horário não foram selecionados, exiba uma mensagem de erro
-            alert("Por favor, selecione uma data e um horário de agendamento.");
-        }
-    } */
 
     function processarAgendamento() {
         var dataSelecionada = $("#datepicker").datepicker("getDate");
