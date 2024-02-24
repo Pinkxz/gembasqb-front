@@ -24,12 +24,20 @@ window.onload = function () {
 }
 
 //Popup para decidir se abrirá o caixa ou não
-function openPopup() {
-    document.getElementById("popup").style.display = "block";
+function openPopup(action) {
+    // Verifica qual ação foi passada como parâmetro
+    if (action === 'abrirCaixa') {
+        // Exibe o popup para abrir o caixa
+        document.getElementById("popup").style.display = "block";
+    } else if (action === 'fecharCaixa') {
+        // Exibe o popup para outra ação
+        document.getElementById("popupFechar").style.display = "block";
+    }
 }
 
 function closePopup() {
     document.getElementById("popup").style.display = "none";
+    document.getElementById("popupFechar").style.display = "none";
 }
 
 
@@ -43,6 +51,7 @@ function abrirCaixa() {
     document.getElementById("caixaFechado").style.display = "none";
     document.getElementById("frenteCaixa").style.display = "block";
     document.getElementById("saldoBloco").style.display = "block"; // Exibir bloco de saldo
+    document.getElementById("serviceContainer").style.display = "block";
     var valorInicial = document.getElementById("valorInicial").value; // Obter o valor inicial inserido
     document.getElementById("saldoInicial").innerText = "R$" + valorInicial; // Atualizar valor do saldo
     localStorage.setItem("horaAbertura", now.toLocaleDateString() + " " + time); // Salvar horário de abertura
@@ -55,10 +64,14 @@ function abrirCaixa() {
 function fecharCaixa() {
     document.getElementById("caixaFechado").style.display = "block";
     document.getElementById("frenteCaixa").style.display = "none";
+    document.getElementById("serviceContainer").style.display = "none";
+    document.getElementById("saldoBloco").style.display = "none";
+    document.getElementById("popupFechar").style.display = "none";
     localStorage.removeItem("caixaAberto");
 }
  
-// Função para validar a etapa atual
+
+
 // Função para validar a etapa atual
 function validateStep(step, isNext) {
   var isValid = false;

@@ -54,7 +54,7 @@
 
         <div id="caixaFechado">
             <h1>Caixa Fechado!</h1>
-            <button onclick="openPopup()">Abrir Caixa</button>
+            <button onclick="openPopup('abrirCaixa')">Abrir Caixa</button>
         </div>
 
         <div class="saldo-bloco" id="saldoBloco" style="display: none;">
@@ -75,16 +75,28 @@
                 </div>
             </div>
          </div>
+
+         <div id="popupFechar" class="popup">
+            <div class="popup-content">
+                <h2>Fechar o Caixa</h2>
+                <h3>Tem certeza que deseja fechar o Caixa?</h3>
+                <div class="popup-buttons">
+                    <button onclick="closePopup()">Cancelar</button>
+                    <button onclick="fecharCaixa()">Confirmar</button>
+                </div>
+            </div>
+         </div>
     
         <!-- Frente de Caixa (inicialmente oculto) -->
         <div id="frenteCaixa" style="display: none;">
             <h1>Frente de Caixa</h1>
             <p id="abertura"></p>
+            <button onclick="openPopup('fecharCaixa')" style="position: absolute; top: 10px; right: 10px;">Fechar Caixa</button>
             <button onclick="openModal()">Adicionar Comanda</button>
         </div>
         
         
-        <div class="container2" id="serviceContainer">
+        <div class="container2" id="serviceContainer" style="display: none;">
             <div class="header2">
                 <span>Núm. Comanda</span>
                 <span>Cliente</span>
