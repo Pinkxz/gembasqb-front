@@ -192,7 +192,7 @@ function validateHours() {
     }
   });
 
-  if (isValid) {
+  if (isValid == false) {
     nextStep();
     mostrarDados();
   }
@@ -284,9 +284,9 @@ function cadastrarUsuario() {
   // Monta o objeto com os dados a serem enviados
   var dados = {
     nome: nome,
-    telefone: telefone,
+    numero: telefone,
     email: email,
-    senha: senha
+    password: senha
   };
 
   // Envia os dados para o backend via requisição HTTP POST
@@ -328,19 +328,19 @@ function cadastrarEmpresa() {
 
   // Monta o objeto com os dados a serem enviados
   var dados = {
-    nomeEmpresa: nomeEmpresa,
+    compNome: nomeEmpresa,
     tipoNegocio: tipoNegocio,
     cep: cep,
     rua: rua,
     estado: estado,
     cidade: cidade,
     bairro: bairro,
-    numero: numero,
+    numeroEnd: numero,
     tamanhoEmpresa: tamanhoEmpresa
   };
 
   // Envia os dados para o backend via requisição HTTP POST
-  fetch('http://localhost:8080/users', {
+  fetch('http://localhost:8080/companys', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

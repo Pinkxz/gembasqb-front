@@ -292,7 +292,7 @@ function adicionarServico() {
         fidelidade: fidelidade
     };
 
-    fetch('http://localhost:8080/servicos/', {
+    fetch('http://localhost:8080/servicos', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
