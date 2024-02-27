@@ -8,11 +8,6 @@ function validateForm() {
   var confirmPassword = document.getElementById('confirm-password').value;
   var number = document.getElementById('number').value;
 
-  // Verificação de nome
-  if (!name.trim()) {
-    alert("Por favor, informe seu nome");
-    return false;
-  }
 
   // Verificação de e-mail
   if (!email.includes('@') || email.split('@')[0].length === 0) {
@@ -112,6 +107,7 @@ function validateStep2() {
   return true;
 }
 
+/*
 function formatPhoneNumber(input) {
     // Remove todos os caracteres não numéricos do número
     var phoneNumber = input.value.replace(/\D/g, '');
@@ -133,7 +129,7 @@ function formatPhoneNumber(input) {
   
     // Atualiza o valor do campo de entrada com o número formatado
     input.value = formattedPhoneNumber;
-}
+} */
 
 let currentStep = 1;
 
@@ -263,4 +259,107 @@ function mostrarDados() {
   document.getElementById('bairro-resultado').value = bairro;
   document.getElementById('numero-resultado').value = numero;
   document.getElementById('tamanho-empresa-resultado').value = tamanhoEmpresaSelecionado;
+}
+
+
+
+
+function cadastrar() {
+  if (validateForm() && validateStep2()) {
+    // Chama a função para cadastrar usuário
+    cadastrarUsuario();
+    // Chama a função para cadastrar empresa
+    cadastrarEmpresa();
+  }
+}
+
+
+function cadastrarUsuario() {
+  // Recupera os dados do formulário de cadastro de usuário
+  var nome = document.getElementById('name').value;
+  var telefone = document.getElementById('number').value;
+  var email = document.getElementById('email').value;
+  var senha = document.getElementById('password').value;
+
+  // Monta o objeto com os dados a serem enviados
+  var dados = {
+    nome: nome,
+    telefone: telefone,
+    email: email,
+    senha: senha
+  };
+
+  // Envia os dados para o backend via requisição HTTP POST
+  fetch('http://localhost:8080/users',{
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(dados)
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Erro ao cadastrar os dados do usuário');
+    }
+    return response.json();
+  })
+  .then(data => {
+    // Trata a resposta do backend (opcional)
+    console.log('Dados do usuário cadastrados com sucesso:', data);
+    // Aqui você pode redirecionar o usuário para outra página, exibir uma mensagem de sucesso, etc.
+  })
+  .catch(error => {
+    console.error('Erro ao cadastrar os dados do usuário:', error);
+    // Aqui você pode exibir uma mensagem de erro para o usuário, por exemplo
+  });
+}
+
+function cadastrarEmpresa() {
+  // Recupera os dados do formulário de cadastro de empresa
+  var nomeEmpresa = document.getElementById('companyName').value;
+  var tipoNegocio = document.getElementById('negocio').value;
+  var cep = document.getElementById('cep').value;
+  var rua = document.getElementById('rua').value;
+  var estado = document.getElementById('estado').value;
+  var cidade = document.getElementById('cidade').value;
+  var bairro = document.getElementById('bairro').value;
+  var numero = document.getElementById('numero').value;
+  var tamanhoEmpresa = document.getElementById('tamanhoEmpresaSelecionado').value;
+
+  // Monta o objeto com os dados a serem enviados
+  var dados = {
+    nomeEmpresa: nomeEmpresa,
+    tipoNegocio: tipoNegocio,
+    cep: cep,
+    rua: rua,
+    estado: estado,
+    cidade: cidade,
+    bairro: bairro,
+    numero: numero,
+    tamanhoEmpresa: tamanhoEmpresa
+  };
+
+  // Envia os dados para o backend via requisição HTTP POST
+  fetch('http://localhost:8080/users', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(dados)
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Erro ao cadastrar os dados da empresa');
+    }
+    return response.json();
+  })
+  .then(data => {
+    // Trata a resposta do backend (opcional)
+    console.log('Dados da empresa cadastrados com sucesso:', data);
+    // Aqui você pode redirecionar o usuário para outra página, exibir uma mensagem de sucesso, etc.
+  })
+  .catch(error => {
+    console.error('Erro ao cadastrar os dados da empresa:', error);
+    // Aqui você pode exibir uma mensagem de erro para o usuário, por exemplo
+  });
 }
