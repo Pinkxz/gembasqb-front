@@ -45,30 +45,33 @@ function exibirColaborador(colaborador) {
     item.dataset.id = colaborador.id; // Definindo o ID do colaborador como atributo de dados
 
     item.innerHTML = `
-        <span>${colaborador.nome}</span>
-        <span>${colaborador.email}</span>
-        <span>${colaborador.cpf}</span>
-        <span>${colaborador.whatsapp}</span>
-        <span>${colaborador.status}</span>
+        <span>${colaborador.nomeCollab}</span>
+        <span>${colaborador.emailCollab}</span>
+       
+        <span>${colaborador.statusCollab}</span>
         <button onclick="deletarColaborador('${colaborador.id}')">Deletar</button>
     `;
     container.appendChild(item);
 }
 
 function adicionarColaborador() {
-    var nome = document.getElementById("nomeServico").value;
+    var nome = document.getElementById("nomeCollab").value;
     var email = document.getElementById("descricao").value;
+    var dataCadastro = document.getElementById("dataC").value
     var cpf = document.getElementById("cpf").value;
     var whatsapp = document.getElementById("Whatsapp").value;
     var status = document.getElementById("status").value;
+    var dataPagamento = document.getElementById("periodoPag").value;
     var foto = document.getElementById("foto").value;
 
     var novoColaborador = {
-        nome: nome,
-        email: email,
-        cpf: cpf,
+        nomeCollab: nome,
+        emailCollab: email,
+        dataCadastro: dataCadastro,
+        cpfcnpj: cpf,
         whatsapp: whatsapp,
-        status: status,
+        statusCollab: status,
+        dataPagamento: dataPagamento,
         foto: foto
     };
 
