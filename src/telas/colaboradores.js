@@ -39,7 +39,7 @@ window.onload = function() {
 }
 
 function exibirColaborador(colaborador) {
-    var container = document.getElementById("colaboradorContainer");
+    var container = document.getElementById("serviceContainer");
     var item = document.createElement("div");
     item.classList.add("item");
     item.dataset.id = colaborador.id; // Definindo o ID do colaborador como atributo de dados

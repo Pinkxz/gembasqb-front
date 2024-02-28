@@ -27,21 +27,51 @@ function toggleProfileOptions() {
     }
   }
 
+
+  window.onload = function() {
+    fetch('http://localhost:8080/produtos/')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(produto => {
+                exibirProduto(produto);
+            });
+        });
+}
+
+
+  function exibirProduto(produto) {
+    var container = document.getElementById("serviceContainer");
+    var item = document.createElement("div");
+    item.classList.add("item");
+    item.dataset.id = produto.id; // Definindo o ID do produto como atributo de dados
+
+    item.innerHTML = `
+        <span>${produto.nomeProduto}</span>
+        <span>${produto.categoriaProduto}</span>
+        <span>${produto.precoProduto}</span>
+        <span>${produto.statusProduto}</span>
+        <button onclick="deletarProduto('${produto.id}')">Deletar</button>
+    `;
+    container.appendChild(item);
+}
+
   function adicionarProduto() {
-    var nome = document.getElementById("nomeServico").value;
+    var nome = document.getElementById("nomeProduto").value;
     var descricao = document.getElementById("descricao").value;
     var preco = document.getElementById("preco").value;
+    var peso = document.getElementById("peso").value
     var categoria = document.getElementById("categoria").value;
     var status = document.getElementById("status").value;
     var foto = document.getElementById("foto").value;
 
     var novoProduto = {
-        nome: nome,
-        descricao: descricao,
-        preco: preco,
-        categoria: categoria,
-        status: status,
-        foto: foto
+        nomeProduto: nome,
+        descricaoProduto: descricao,
+        precoProduto: preco,
+        pesoProduto: peso,
+        categoriaProduto: categoria,
+        statusProduto: status,
+        fotoProduto: foto
     };
 
     fetch('http://localhost:8080/produtos', {
