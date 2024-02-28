@@ -217,143 +217,79 @@ function preencherClientesSelect() {
     });
 }
 
-var clientes = [
-  { "id": 1, "nome": "sexo", "foto": "G-icon.png" },
-  { "id": 2, "nome": "Cliente 2", "foto": "perfil.png" },
-  { "id": 3, "nome": "Cliente 3", "foto": "gemba-logo.png" },
-  { "id": 6, "nome": "sexao", "foto": "G-icon.png" },
-  { "id": 4, "nome": "Clieante 2", "foto": "perfil.png" },
-  { "id": 5, "nome": "Clieante 3", "foto": "gemba-logo.png" }
-];
-
-function preencherGridClientes() {
-  var grid = document.getElementById('clientes-grid');
-  clientes.forEach(function(cliente) {
-      var clienteDiv = document.createElement('div');
-      clienteDiv.classList.add('cliente');
-      clienteDiv.id = 'cliente-' + cliente.id; // Atribui um ID único baseado no ID do cliente
-      var img = document.createElement('img');
-      if (cliente.foto) {
-          img.src = cliente.foto;
-      } else {
-          img.src = 'caminho/para/imagem-padrao.jpg';
-      }
-      img.alt = cliente.nome;
-      var nomeCliente = document.createElement('p');
-      nomeCliente.textContent = cliente.nome; // Adiciona o nome do cliente como conteúdo do parágrafo
-      clienteDiv.appendChild(img);
-      clienteDiv.appendChild(nomeCliente); // Adiciona o parágrafo com o nome do cliente
-      clienteDiv.onclick = function() {
-          selecionarCliente(cliente.id); // Adiciona a função selecionarCliente() ao evento de clique do card
-      };
-      grid.appendChild(clienteDiv);
-  });
+// Função para obter clientes do banco de dados
+function obterClientesDoBancoDeDados() {
+    // Aqui você faria uma requisição para o backend para obter os clientes do banco de dados
+    // Exemplo usando Fetch API
+    return fetch('/api/clientes')
+        .then(response => response.json())
+        .catch(error => {
+            console.error('Erro ao obter clientes:', error);
+            return []; // Retorna uma lista vazia em caso de erro
+        });
 }
 
-
-// Função para selecionar um cliente
-function selecionarCliente(id) {
-  // Aqui você pode implementar a lógica para selecionar o cliente com o ID fornecido
-
-  // Exemplo de lógica: salvar o ID do cliente em uma variável ou realizar outra ação necessária
-  console.log("Cliente selecionado:", id);
-
-  // Vamos supor que você queira salvar o ID do cliente selecionado em uma variável global chamada clienteSelecionado
-  clienteSelecionado = id;
-
-  // Além disso, você pode realizar outras ações aqui, como destacar visualmente o cliente selecionado, etc.
-  // Remove a classe de todos os cards
-  var cards = document.querySelectorAll('.cliente');
-  cards.forEach(function(card) {
-      card.classList.remove('selected-card');
-  });
-
-  // Adiciona a classe apenas ao card clicado
-  var card = document.getElementById('cliente-' + id); // Supondo que cada card tenha um ID único, como "cliente-1", "cliente-2", etc.
-  if (card) {
-      card.classList.add('selected-card');
-  }
+// Função para obter colaboradores do banco de dados
+function obterColaboradoresDoBancoDeDados() {
+    // Aqui você faria uma requisição para o backend para obter os colaboradores do banco de dados
+    // Exemplo usando Fetch API
+    return fetch('/api/colaboradores')
+        .then(response => response.json())
+        .catch(error => {
+            console.error('Erro ao obter colaboradores:', error);
+            return []; // Retorna uma lista vazia em caso de erro
+        });
 }
 
-var colaboradores = [
-  { "id": 1, "nome": "Colabsexorador 1", "foto": "G-icon.png" },
-  { "id": 2, "nome": "Cosexoor 2", "foto": "perfil.png" },
-  { "id": 3, "nome": "Colabsexorador 3", "foto": "gemba-logo.png" }
-];
+// Função para obter serviços do banco de dados
+function obterServicosDoBancoDeDados() {
+    // Aqui você faria uma requisição para o backend para obter os serviços do banco de dados
+    // Exemplo usando Fetch API
+    return fetch('/api/servicos')
+        .then(response => response.json())
+        .catch(error => {
+            console.error('Erro ao obter serviços:', error);
+            return []; // Retorna uma lista vazia em caso de erro
+        });
+}
 
-// Função para preencher o grid de colaboradores na Etapa 1 
-// Função para preencher o grid de colaboradores na Etapa 1 
-function preencherGridColaboradores() {
-    var grid = document.getElementById('colaboradores-grid');
-    colaboradores.forEach(function(colaborador) {
-        var colaboradorDiv = document.createElement('div');
-        colaboradorDiv.classList.add('colaborador');
-        colaboradorDiv.id = 'colaborador-' + colaborador.id; // Atribui um ID único baseado no ID do colaborador
-        var img = document.createElement('img');
-        if (colaborador.foto) {
-            img.src = colaborador.foto;
-        } else {
-            img.src = 'caminho/para/imagem-padrao.jpg';
-        }
-        img.alt = colaborador.nome;
-        img.onclick = function() {
-            selecionarColaborador(colaborador.id);
-        };
-        colaboradorDiv.appendChild(img);
-  
-        // Criar um parágrafo para o nome do colaborador
-        var nomeParagrafo = document.createElement('p');
-        nomeParagrafo.textContent = colaborador.nome;
-        colaboradorDiv.appendChild(nomeParagrafo);
-  
-        grid.appendChild(colaboradorDiv);
+// Função para preencher o grid de clientes com os dados obtidos do banco de dados
+async function preencherGridClientes() {
+    var grid = document.getElementById('clientes-grid');
+    var clientes = await obterClientesDoBancoDeDados();
+    clientes.forEach(function(cliente) {
+        // Restante do código para preencher o grid de clientes permanece o mesmo
     });
-  }
-  
-
-// Função para selecionar um colaborador
-function selecionarColaborador(id) {
-  // Aqui você pode implementar a lógica para selecionar o colaborador com o ID fornecido
-
-  // Exemplo de lógica: salvar o ID do colaborador em uma variável ou realizar outra ação necessária
-  console.log("Colaborador selecionado:", id);
-
-  // Vamos supor que você queira salvar o ID do colaborador selecionado em uma variável global chamada colaboradorSelecionado
-  colaboradorSelecionado = id;
-
-  // Além disso, você pode realizar outras ações aqui, como destacar visualmente o colaborador selecionado, etc.
-  // Remove a classe de todos os cards
-  var cards = document.querySelectorAll('.colaborador');
-  cards.forEach(function(card) {
-      card.classList.remove('selected-card');
-  });
-
-  // Adiciona a classe apenas ao card clicado
-  var card = document.getElementById('colaborador-' + id); // Supondo que cada card tenha um ID único, como "colaborador-1", "colaborador-2", etc.
-  if (card) {
-      card.classList.add('selected-card');
-  }
 }
 
+// Função para preencher o grid de colaboradores com os dados obtidos do banco de dados
+async function preencherGridColaboradores() {
+    var grid = document.getElementById('colaboradores-grid');
+    var colaboradores = await obterColaboradoresDoBancoDeDados();
+    colaboradores.forEach(function(colaborador) {
+        // Restante do código para preencher o grid de colaboradores permanece o mesmo
+    });
+}
 
 // Função para adicionar dinamicamente os serviços na terceira etapa do modal
-function addServices() {
+async function addServices() {
     var servicosContainer = document.getElementById("servicos");
 
     // Limpa o conteúdo atual para evitar duplicatas
     servicosContainer.innerHTML = "";
 
-    // Lista de serviços
-    var listaDeServicos = [
-        "Corte de Cabelo",
-        "Manicure",
-        "Pedicure",
-        "Maquiagem",
-        "Maquiagem",
-        "Maquiagem"
-        // Adicione mais serviços conforme necessário
-    ];
+    // Obtém os serviços do banco de dados
+    var servicos = await obterServicosDoBancoDeDados();
 
+    // Adiciona cada serviço ao contêiner de serviços
+    servicos.forEach(function(service) {
+        // Restante do código para adicionar os serviços permanece o mesmo
+    });
+}
+
+
+
+/*
     // Adiciona cada serviço ao contêiner de serviços
     listaDeServicos.forEach(function(service) {
         var checkbox = document.createElement("input");
@@ -371,7 +307,7 @@ function addServices() {
         servicosContainer.appendChild(br);
     });
 }
-
+*/
 // Chamada da função para adicionar os serviços
 addServices();
 
