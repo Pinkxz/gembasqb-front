@@ -42,14 +42,15 @@ function exibirColaborador(colaborador) {
     var container = document.getElementById("serviceContainer");
     var item = document.createElement("div");
     item.classList.add("item");
-    item.dataset.id = colaborador.id; // Definindo o ID do colaborador como atributo de dados
+    var colaboradorId = colaborador.id; // Obter o ID do colaborador
+    item.dataset.id = colaboradorId; // Definindo o ID do colaborador como atributo de dados
 
     item.innerHTML = `
         <span>${colaborador.nomeCollab}</span>
         <span>${colaborador.emailCollab}</span>
        
         <span>${colaborador.statusCollab}</span>
-        <button onclick="deletarColaborador('${colaborador.id}')">Deletar</button>
+        <button onclick="deletarColaborador('${colaborador.idCollabUuid}')">Deletar</button>
     `;
     container.appendChild(item);
 }
@@ -96,4 +97,32 @@ function adicionarColaborador() {
     .catch(error => {
         console.error('Erro ao adicionar colaborador:', error);
     });
+}
+
+function deletarColaborador(colaboradorId) {
+    
+    if (confirm("Tem certeza que deseja deletar este colaborador?")) {
+        fetch(`http://localhost:8080/colaboradores/${colaboradorId}`, {
+            method: 'DELETE',
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro ao deletar colaborador.');
+            }
+            return response.text();
+        })
+        .then(data => {
+            
+            // Aqui você pode adicionar lógica adicional, se necessário
+            // Por exemplo, remover o colaborador da interface após a exclusão
+            var colaboradorElement = document.querySelector(`.item[data-id="${colaboradorId}"]`);
+            if (colaboradorElement) {
+                console.log('Colaborador deletado com sucesso:', data);
+                colaboradorElement.remove();
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao deletar colaborador:', error);
+        });
+    }
 }

@@ -50,7 +50,7 @@ function toggleProfileOptions() {
         <span>${produto.categoriaProduto}</span>
         <span>${produto.precoProduto}</span>
         <span>${produto.statusProduto}</span>
-        <button onclick="deletarProduto('${produto.id}')">Deletar</button>
+        <button onclick="deletarProduto('${produto.idProduto}')">Deletar</button>
     `;
     container.appendChild(item);
 }
@@ -97,3 +97,29 @@ function toggleProfileOptions() {
     });
 }
   
+function deletarProduto(produtoId) {
+    if (confirm("Tem certeza que deseja deletar este produto?")) {
+        fetch(`http://localhost:8080/produtos/${produtoId}`, {
+            method: 'DELETE',
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro ao deletar produto.');
+            }
+            return response.text();
+        })
+        .then(data => {
+            
+            // Aqui você pode adicionar lógica adicional, se necessário
+            // Por exemplo, remover o produto da interface após a exclusão
+            var produtoElement = document.querySelector(`.item[data-id="${produtoId}"]`);
+            if (produtoElement) {
+                console.log('produto deletado com sucesso:', data);
+                produtoElement.remove();
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao deletar produto:', error);
+        });
+    }
+}

@@ -62,6 +62,7 @@
                         success: function(response) {
                             // Armazenar o token JWT retornado pelo backend no localStorage
                             localStorage.setItem('token', response.token);
+                            document.dispatchEvent(new Event('tokenReady'));
                             window.location.href = "/src/telas/painel.html"; 
                         },  
                         error: function(xhr, status, error) {

@@ -35,7 +35,7 @@ function exibirServico(servico) {
         <span>${servico.preco}</span>
         <span>${servico.tempo}</span>
         <span>${servico.status}</span>
-        <button onclick="deletarServico('${servico.id}')">Deletar</button>
+        <button onclick="deletarServico('${servico.idServico}')">Deletar</button>
     `;
     container.appendChild(item);
 }
@@ -88,40 +88,29 @@ function adicionarServico() {
 }
 
 // Call this function to delete a service by its ID
-function deletarServico(id) {
-    if (!id) {
-        console.error('ID is undefined');
-        return;
+function deletarServico(servicoId) {
+    if (confirm("Tem certeza que deseja deletar este produto?")) {
+        fetch(`http://localhost:8080/servicos/${servicoId}`, {
+            method: 'DELETE',
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro ao deletar servico.');
+            }
+            return response.text();
+        })
+        .then(data => {
+            
+            // Aqui você pode adicionar lógica adicional, se necessário
+            // Por exemplo, remover o servico da interface após a exclusão
+            var servicoElement = document.querySelector(`.item[data-id="${servicoId}"]`);
+            if (servicoElement) {
+                console.log('servico deletado com sucesso:', data);
+                servicoElement.remove();
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao deletar servico:', error);
+        });
     }
-    // Check if id is a valid UUID
-    if (!isValidUUID(id)) {
-        console.error('Invalid UUID');
-        return;
-    }
-
-    // Log the ID value for debugging
-    console.log('Deleting service with ID:', id);
-
-    // Make the fetch request to delete the service
-    fetch(`http://localhost:8080/servicos/${id}`, {
-        method: 'DELETE'
-    })
-    .then(response => {
-        if (response.ok) {
-            var container = document.getElementById("serviceContainer");
-            var item = document.getElementById(`servico-${id}`);
-            container.removeChild(item); // Remove o serviço da página
-        } else {
-            console.error('Erro ao deletar serviço.');
-        }
-    })
-    .catch(error => {
-        console.error('Erro ao deletar serviço:', error);
-    });
-}
-
-// Function to check if a string is a valid UUID
-function isValidUUID(uuid) {
-    const uuidPattern = /^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$/;
-    return uuidPattern.test(uuid);
 }

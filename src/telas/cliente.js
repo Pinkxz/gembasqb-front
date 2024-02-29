@@ -87,3 +87,31 @@ function adicionarCliente() {
         console.error('Erro ao adicionar cliente:', error);
     });
 }
+
+
+function deletarCliente(clienteId) {
+    if (confirm("Tem certeza que deseja deletar este cliente?")) {
+        fetch(`http://localhost:8080/clientes/${clienteId}`, {
+            method: 'DELETE',
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro ao deletar cliente.');
+            }
+            return response.text();
+        })
+        .then(data => {
+           // console.log('Cliente deletado com sucesso:', data);
+            // Aqui você pode adicionar lógica adicional, se necessário
+            // Por exemplo, remover o cliente da interface após a exclusão
+            var clienteElement = document.querySelector(`.item[data-id="${clienteId}"]`);
+            if (clienteElement) {
+                console.log('Cliente deletado com sucesso:', data);
+                clienteElement.remove();
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao deletar cliente:', error);
+        });
+    }
+}
