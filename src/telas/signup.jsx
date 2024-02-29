@@ -138,6 +138,9 @@ function nextStep() {
     document.getElementById(`step${currentStep}`).style.display = 'none';
     currentStep++;
     document.getElementById(`step${currentStep}`).style.display = 'block';
+  if(currentStep == 3){
+    mostrarDados();
+  }
   }
 }
 
@@ -244,7 +247,7 @@ function mostrarDados() {
   var cidade = document.getElementById('cidade').value;
   var bairro = document.getElementById('bairro').value;
   var numero = document.getElementById('numero').value;
-  var tipoEmpresaSelecionado = document.querySelector('.dashboard-card.selected')?.dataset.size;
+  var tipoEmpresaSelecionado = document.getElementById('tamanhoEmpresaSelecionado').value;
 
   // Exibir os dados na etapa 4
   document.getElementById('nome-resultado').value = nome;
@@ -258,7 +261,7 @@ function mostrarDados() {
   document.getElementById('cidade-resultado').value = cidade;
   document.getElementById('bairro-resultado').value = bairro;
   document.getElementById('numero-resultado').value = numero;
-  document.getElementById('tamanho-empresa-resultado').value = tamanhoEmpresaSelecionado;
+  document.getElementById('tamanho-empresa-resultado').value = tipoEmpresaSelecionado;
 }
 
 

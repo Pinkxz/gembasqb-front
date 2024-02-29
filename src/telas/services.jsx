@@ -15,6 +15,16 @@ function createSpan(text) {
     return span;
 }
 
+function toggleProfileOptions() {
+    var profileOptions = document.getElementById("profileOptions");
+    if (profileOptions.style.display === "none") {
+        profileOptions.style.display = "block";
+    } else {
+        profileOptions.style.display = "none";
+    }
+  }
+  
+
   window.onload = function() {
     fetch('http://localhost:8080/servicos/')
         .then(response => response.json())
@@ -100,7 +110,7 @@ function deletarServico(servicoId) {
             return response.text();
         })
         .then(data => {
-            
+            console.log('servico deletado com sucesso:', data);
             // Aqui você pode adicionar lógica adicional, se necessário
             // Por exemplo, remover o servico da interface após a exclusão
             var servicoElement = document.querySelector(`.item[data-id="${servicoId}"]`);

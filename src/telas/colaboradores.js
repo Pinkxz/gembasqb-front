@@ -99,10 +99,10 @@ function adicionarColaborador() {
     });
 }
 
-function deletarColaborador(colaboradorId) {
+function deletarColaborador(idCollabUuid) {
     
     if (confirm("Tem certeza que deseja deletar este colaborador?")) {
-        fetch(`http://localhost:8080/colaboradores/${colaboradorId}`, {
+        fetch(`http://localhost:8080/colaboradores/${idCollabUuid}`, {
             method: 'DELETE',
         })
         .then(response => {
@@ -112,10 +112,10 @@ function deletarColaborador(colaboradorId) {
             return response.text();
         })
         .then(data => {
-            
+            console.log('Colaborador deletado com sucesso:', data);
             // Aqui você pode adicionar lógica adicional, se necessário
             // Por exemplo, remover o colaborador da interface após a exclusão
-            var colaboradorElement = document.querySelector(`.item[data-id="${colaboradorId}"]`);
+            var colaboradorElement = document.querySelector(`.item[data-id="${idCollabUuid}"]`);
             if (colaboradorElement) {
                 console.log('Colaborador deletado com sucesso:', data);
                 colaboradorElement.remove();

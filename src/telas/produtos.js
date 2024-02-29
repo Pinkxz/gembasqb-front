@@ -109,7 +109,7 @@ function deletarProduto(produtoId) {
             return response.text();
         })
         .then(data => {
-            
+            console.log('produto deletado com sucesso:', data);
             // Aqui você pode adicionar lógica adicional, se necessário
             // Por exemplo, remover o produto da interface após a exclusão
             var produtoElement = document.querySelector(`.item[data-id="${produtoId}"]`);
