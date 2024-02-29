@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="styleLogin.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="utils.js"></script>
     <title>Login - GembaSQB</title>
   </head>
   <body>
@@ -42,32 +43,36 @@
   
    
     <script>
-    $(document).ready(function() {
-    $("#loginForm").submit(function(event) {
-        event.preventDefault();
+            $(document).ready(function() {
+                $("#loginForm").submit(function(event) {
+                    event.preventDefault();
 
-        var email = $("#username").val();
-        var password = $("#password").val();
+                    var email = $("#username").val();
+                    var password = $("#password").val();
 
-        var userData = {
-            "email": email,
-            "password": password
-        };
+                    var userData = {
+                        "email": email,
+                        "password": password
+                    };
 
-        $.ajax({
-            type: "POST",
-            contentType: "application/json",
-            url: "http://localhost:8080/login", // Corrigido para porta 8080
-            data: JSON.stringify(userData),
-            success: function(response) {
-                window.location.href = "/src/telas/painel.html"; 
-            },  
-            error: function(xhr, status, error) {
-                alert("Erro: " + xhr.responseText);
-            }
+                    $.ajax({
+                        type: "POST",
+                        contentType: "application/json",
+                        url: "http://localhost:8080/login",
+                        data: JSON.stringify(userData),
+                        success: function(response) {
+                            // Armazenar o token JWT retornado pelo backend no localStorage
+                            localStorage.setItem('token', response.token);
+                            window.location.href = "/src/telas/painel.html"; 
+                            obterUsuarioLogado();
+                        },  
+                        error: function(xhr, status, error) {
+                            alert("Erro: " + xhr.responseText);
+                        }
+                    });
+                });
             });
-        });
-    });
+
     </script>
   </body>
 </html>
