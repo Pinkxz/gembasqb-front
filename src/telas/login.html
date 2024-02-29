@@ -2,41 +2,74 @@
 <html lang="PT-BR">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" sizes=32x32 href="G-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="G-icon.png" />
     <link rel="stylesheet" href="styleLogin.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Login - GembaSQB</title>
   </head>
   <body>
 
-  <!--Login-->
-  <div class="logo-container">
-    <a href="/index.html"> 
-      <img src="gemba-logo.png" alt="Logo da Empresa">
-    </a>
-  </div>
-  
+    <!--Login-->
+    <div class="logo-container">
+      <a href="/index.html"> 
+        <img src="gemba-logo.png" alt="Logo da Empresa">
+      </a>
+    </div>
+    
     <div class="form-container">
       <h1>Login</h1>
-      <div class="form-group">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username">
-      </div>
-  
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password">
-      </div>
-  
-      <div class="form-group">
-        <a href="painel.html"><button type="button">Entrar</button></a>
-     </div>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="username">E-mail:</label>
+          <input type="text" id="username" name="username">
+        </div>
+    
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password">
+        </div>
+    
+        <div class="form-group">
+          <button type="submit">Entrar</button>
+        </div>
+      </form>
   
       <div class="form-options">
         <a href="passReset.html">Esqueceu a senha?</a> || <a href="signup.html">Não tenho conta ainda</a>
       </div>
     </div>    
   
-    <!--<script type="module" src="/src/main.jsx"></script>-->
+   
+    <script>
+    $(document).ready(function() {
+    $("#loginForm").submit(function(event) {
+        event.preventDefault();
+
+        var email = $("#username").val();
+        var password = $("#password").val();
+
+        var userData = {
+            "email": email,
+            "password": password
+        };
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "http://localhost:8080/login", // Corrigido para porta 8080
+            data: JSON.stringify(userData),
+            success: function(response) {
+                alert(response);
+                window.location.href = "/painel.html"; 
+            },
+            error: function(xhr, status, error) {
+                alert("Erro: " + xhr.responseText);
+            }
+        });
+    });
+});
+
+    </script>
   </body>
 </html>

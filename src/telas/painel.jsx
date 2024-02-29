@@ -192,122 +192,87 @@ function closeModal() {
   
 /*========================================================================Funcionamento Front-End acima==================================================*/
 
-function preencherClientesSelect() {
-    var select = $("#clientesSelect");
-
-    // Limpa o select antes de adicionar as opções
-    select.empty();
-
-    // Adiciona uma opção vazia (se necessário)
-    $("<option>").text("Selecione um cliente").appendTo(select);
-
-    // Faz uma solicitação AJAX para obter os clientes do servidor
-    $.ajax({
-        url: "/clientes",
-        type: "GET",
-        dataType: "json",
-        success: function(clientes) {
-            $.each(clientes, function(i, cliente) {
-                $("<option>").val(cliente.id).text(cliente.nome).appendTo(select);
-            });
-        },
-        error: function(xhr, status, error) {
-            console.error("Erro ao obter clientes:", status, error);
+// Função para obter dados do banco de dados
+async function obterDadosDoBancoDeDados(endpoint) {
+    try {
+        const response = await fetch(`/api/${endpoint}`);
+        if (!response.ok) {
+            throw new Error(`Erro ao obter dados ${endpoint}`);
         }
+        return await response.json();
+    } catch (error) {
+        console.error(`Erro ao obter ${endpoint}:`, error);
+        return [];
+    }
+}
+
+// Função para preencher o grid com os dados obtidos do banco de dados
+async function preencherGrid(elementId, data) {
+    var grid = document.getElementById(elementId);
+    data.forEach(function(item) {
+        var itemDiv = document.createElement('div');
+        itemDiv.classList.add('item');
+        itemDiv.id = `${elementId}-${item.id}`;
+        var img = document.createElement('img');
+        if (item.foto) {
+            img.src = item.foto;
+        } else {
+            img.src = 'caminho/para/imagem-padrao.jpg';
+        }
+        img.alt = item.nome;
+        var nomeItem = document.createElement('p');
+        nomeItem.textContent = item.nome;
+        itemDiv.appendChild(img);
+        itemDiv.appendChild(nomeItem);
+        itemDiv.onclick = function() {
+            selecionarItem(item.id, elementId);
+        };
+        grid.appendChild(itemDiv);
     });
 }
 
-// Função para obter clientes do banco de dados
-function obterClientesDoBancoDeDados() {
-    // Aqui você faria uma requisição para o backend para obter os clientes do banco de dados
-    // Exemplo usando Fetch API
-    return fetch('/api/clientes')
-        .then(response => response.json())
-        .catch(error => {
-            console.error('Erro ao obter clientes:', error);
-            return []; // Retorna uma lista vazia em caso de erro
-        });
-}
-
-// Função para obter colaboradores do banco de dados
-function obterColaboradoresDoBancoDeDados() {
-    // Aqui você faria uma requisição para o backend para obter os colaboradores do banco de dados
-    // Exemplo usando Fetch API
-    return fetch('/api/colaboradores')
-        .then(response => response.json())
-        .catch(error => {
-            console.error('Erro ao obter colaboradores:', error);
-            return []; // Retorna uma lista vazia em caso de erro
-        });
-}
-
-// Função para obter serviços do banco de dados
-function obterServicosDoBancoDeDados() {
-    // Aqui você faria uma requisição para o backend para obter os serviços do banco de dados
-    // Exemplo usando Fetch API
-    return fetch('/api/servicos')
-        .then(response => response.json())
-        .catch(error => {
-            console.error('Erro ao obter serviços:', error);
-            return []; // Retorna uma lista vazia em caso de erro
-        });
-}
-
-// Função para preencher o grid de clientes com os dados obtidos do banco de dados
-async function preencherGridClientes() {
-    var grid = document.getElementById('clientes-grid');
-    var clientes = await obterClientesDoBancoDeDados();
-    clientes.forEach(function(cliente) {
-        // Restante do código para preencher o grid de clientes permanece o mesmo
+// Função para selecionar um item
+function selecionarItem(id, elementId) {
+    var items = document.querySelectorAll(`#${elementId} .item`);
+    items.forEach(function(item) {
+        item.classList.remove('selected-item');
     });
-}
-
-// Função para preencher o grid de colaboradores com os dados obtidos do banco de dados
-async function preencherGridColaboradores() {
-    var grid = document.getElementById('colaboradores-grid');
-    var colaboradores = await obterColaboradoresDoBancoDeDados();
-    colaboradores.forEach(function(colaborador) {
-        // Restante do código para preencher o grid de colaboradores permanece o mesmo
-    });
+    var selectedItem = document.getElementById(`${elementId}-${id}`);
+    if (selectedItem) {
+        selectedItem.classList.add('selected-item');
+    }
 }
 
 // Função para adicionar dinamicamente os serviços na terceira etapa do modal
 async function addServices() {
     var servicosContainer = document.getElementById("servicos");
-
-    // Limpa o conteúdo atual para evitar duplicatas
     servicosContainer.innerHTML = "";
-
-    // Obtém os serviços do banco de dados
-    var servicos = await obterServicosDoBancoDeDados();
-
-    // Adiciona cada serviço ao contêiner de serviços
+    var servicos = await obterDadosDoBancoDeDados("servicos");
     servicos.forEach(function(service) {
-        // Restante do código para adicionar os serviços permanece o mesmo
-    });
-}
-
-
-
-/*
-    // Adiciona cada serviço ao contêiner de serviços
-    listaDeServicos.forEach(function(service) {
         var checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         checkbox.name = "servico";
         checkbox.value = service;
-        
         var label = document.createElement("label");
         label.appendChild(document.createTextNode(service));
-
         var br = document.createElement("br");
-
         servicosContainer.appendChild(checkbox);
         servicosContainer.appendChild(label);
         servicosContainer.appendChild(br);
     });
 }
-*/
+
+// Função para inicializar a aplicação
+async function inicializarApp() {
+    await preencherGrid("clientes-grid", await obterDadosDoBancoDeDados("clientes"));
+    await preencherGrid("colaboradores-grid", await obterDadosDoBancoDeDados("colaboradores"));
+    await addServices();
+}
+
+// Chamada para inicializar a aplicação
+inicializarApp();
+
+
 // Chamada da função para adicionar os serviços
 addServices();
 
