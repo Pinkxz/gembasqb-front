@@ -60,16 +60,14 @@
             url: "http://localhost:8080/login", // Corrigido para porta 8080
             data: JSON.stringify(userData),
             success: function(response) {
-                alert(response);
-                window.location.href = "/painel.html"; 
-            },
+                window.location.href = "/src/telas/painel.html"; 
+            },  
             error: function(xhr, status, error) {
                 alert("Erro: " + xhr.responseText);
             }
+            });
         });
     });
-});
-
     </script>
   </body>
 </html>
