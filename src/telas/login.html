@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="styleLogin.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="utils.js"></script>
     <title>Login - GembaSQB</title>
   </head>
   <body>
@@ -64,7 +63,6 @@
                             // Armazenar o token JWT retornado pelo backend no localStorage
                             localStorage.setItem('token', response.token);
                             window.location.href = "/src/telas/painel.html"; 
-                            obterUsuarioLogado();
                         },  
                         error: function(xhr, status, error) {
                             alert("Erro: " + xhr.responseText);
