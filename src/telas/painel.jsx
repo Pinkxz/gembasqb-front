@@ -224,11 +224,11 @@ function preencherGridClientes() {
 function selecionarCliente(idCliente) {
     // Remover a classe 'selected-item' de todos os clientes
     document.querySelectorAll('.cliente-card').forEach(card => {
-        card.classList.remove('selected-item');
+        card.classList.remove('selected-card');
     });
     
     // Adicionar a classe 'selected-item' apenas ao cliente clicado
-    document.getElementById(`cliente-${idCliente}`).classList.add('selected-item');
+    document.getElementById(`cliente-${idCliente}`).classList.add('selected-card');
     
     // Implemente o que desejar ao selecionar um cliente
     console.log("Cliente selecionado:", idCliente);
@@ -237,8 +237,56 @@ function selecionarCliente(idCliente) {
 // Chamar a função para preencher o grid de clientes quando a página carregar
 document.addEventListener("DOMContentLoaded", preencherGridClientes);
 
+//=====================================================================================
 
-        /*
+
+function preencherGridColaboradores() {
+    fetch("http://localhost:8080/colaboradores/")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erro ao obter colaboradores: " + response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Limpar o grid antes de adicionar os Collabs
+            document.getElementById("colaboradores-grid").innerHTML = "";
+
+            // Iterar sobre cada Collab e adicionar um card ao grid
+            data.forEach(Collab => {
+                var card = `
+                    <div class="colaborador-card" id="colaborador-${Collab.idCollabUuid}" onclick="selecionarColaborador('${Collab.idCollabUuid}')">
+                        <img src="${Collab.foto}" alt="${Collab.nomeCollab}">
+                        <p>${Collab.nomeCollab}</p>
+                    </div>
+                `;
+                document.getElementById("colaboradores-grid").innerHTML += card;
+            });
+        })
+        .catch(error => {
+            console.error(error);
+        });
+}
+
+// Função para selecionar um colaborador
+function selecionarColaborador(idCollabUuid) {
+    // Remover a classe 'selected-card' de todos os colaboradores
+    document.querySelectorAll('.colaborador-card').forEach(card => {
+        card.classList.remove('selected-card');
+    });
+    
+    // Adicionar a classe 'selected-card' apenas ao colaborador clicado
+    document.getElementById(`colaborador-${idCollabUuid}`).classList.add('selected-card');
+    
+    // Implemente o que desejar ao selecionar um colaborador
+    console.log("Colaborador selecionado:", idCollabUuid);
+}
+
+// Chamar a função para preencher o grid de colaboradores quando a página carregar
+document.addEventListener("DOMContentLoaded", preencherGridColaboradores);
+
+
+        
 // Função para adicionar dinamicamente os serviços na terceira etapa do modal
 async function addServices() {
     var servicosContainer = document.getElementById("servicos");
@@ -258,7 +306,7 @@ async function addServices() {
     });
 }
 
-*/
+
 
 function processarEscolha() {
     var escolha = document.querySelector('input[name="escolha"]:checked').value;
