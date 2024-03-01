@@ -30,7 +30,7 @@ function generateRandomPassword() {
 
 window.onload = function() {
     fetch('http://localhost:8080/colaboradores/')
-        .then(response => response.json())
+        .then(response => response.json())  
         .then(data => {
             data.forEach(colaborador => {
                 exibirColaborador(colaborador);
@@ -46,12 +46,13 @@ function exibirColaborador(colaborador) {
     item.dataset.id = colaboradorId; // Definindo o ID do colaborador como atributo de dados
 
     item.innerHTML = `
-        <span>${colaborador.nomeCollab}</span>
-        <span>${colaborador.emailCollab}</span>
-       
-        <span>${colaborador.statusCollab}</span>
-        <button onclick="deletarColaborador('${colaborador.idCollabUuid}')">Deletar</button>
-    `;
+    <span>${colaborador.nomeCollab}</span>
+    <span>${colaborador.emailCollab}</span>
+    <span>${colaborador.statusCollab}</span>
+    <button onclick="deletarColaborador('${colaborador.idCollabUuid}')">Deletar</button>
+    <button onclick="editarColaborador('${colaborador.idCollabUuid}')">Editar</button>
+`;
+
     container.appendChild(item);
 }
 
@@ -125,4 +126,86 @@ function deletarColaborador(idCollabUuid) {
             console.error('Erro ao deletar colaborador:', error);
         });
     }
+}
+
+function editarColaborador(idCollabUuid) {
+    // Encontrar o colaborador na lista de colaboradores
+    var colaborador = document.querySelector(`.item[data-id="${idCollabUuid}"]`);
+    
+    // Verificar se o colaborador foi encontrado
+    if (colaborador) {
+        // Preencher os campos do modal com os dados do colaborador
+        var nomeCollabElement = colaborador.querySelector('span:nth-child(1)');
+        var descricaoElement = colaborador.querySelector('span:nth-child(2)');
+        var statusElement = colaborador.querySelector('span:nth-child(3)');
+        var dataElement = colaborador.querySelector('span:nth-child(4)');
+        var cpfElement = colaborador.querySelector('span:nth-child(5)');
+        var whatsappElement = colaborador.querySelector('span:nth-child(6)');
+        var periodoPagElement = colaborador.querySelector('span:nth-child(7)');
+        var statusElement = colaborador.querySelector('span:nth-child(8)');
+        var fotoElement = colaborador.querySelector('span:nth-child(9)');
+        
+        if (nomeCollabElement && descricaoElement && statusElement && dataElement && cpfElement && whatsappElement && periodoPagElement && statusElement && fotoElement) {
+            document.getElementById("nomeCollab").value = nomeCollabElement.textContent;
+            document.getElementById("descricao").value = descricaoElement.textContent;
+            document.getElementById("status").value = statusElement.textContent;
+            document.getElementById("dataC").value = dataElement.textContent;
+            document.getElementById("cpf").value = cpfElement.textContent;
+            document.getElementById("Whatsapp").value = whatsappElement.textContent;
+            document.getElementById("periodoPag").value = periodoPagElement.textContent;
+            document.getElementById("status").value = statusElement.textContent;
+            document.getElementById("foto").value = fotoElement.textContent;
+
+            // Alterar o texto do botão para "Salvar" em vez de "Adicionar"
+            document.querySelector(".button button").innerText = "Salvar";
+
+            // Adicionar um evento de clique diferente ao botão para chamar a função de atualização
+            document.querySelector(".button button").onclick = function() {
+                atualizarColaborador(idCollabUuid);
+            };
+
+            // Exibir o modal de edição
+            openModal();
+        } else {
+            console.error('Um ou mais elementos não foram encontrados dentro do colaborador.');
+        }
+    } else {
+        console.error('Colaborador não encontrado.');
+    }
+}
+
+
+
+function atualizarColaborador(idCollabUuid) {
+    var nome = document.getElementById("nomeCollab").value;
+    var email = document.getElementById("descricao").value;
+    var status = document.getElementById("status").value;
+
+    var dadosAtualizados = {
+        nomeCollab: nome,
+        emailCollab: email,
+        statusCollab: status
+    };
+
+    fetch(`http://localhost:8080/colaboradores/${idCollabUuid}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dadosAtualizados)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro ao atualizar colaborador.');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Colaborador atualizado com sucesso:', data);
+        // Aqui você pode adicionar lógica adicional, se necessário
+        closeModal(); // Fecha o modal após atualizar o colaborador
+    })
+    .catch(error => {
+        console.error('Erro ao atualizar colaborador:', error);
+    });
 }

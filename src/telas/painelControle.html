@@ -60,7 +60,33 @@
         <div class="saldo-bloco" id="saldoBloco" style="display: none;">
             <h3>Saldo</h3>
             <p id="saldoInicial">R$0,00</p>
+            <button onclick="openAdicionarSaldoModal()">Entrada</button>
+            <button onclick="openRemoverSaldoModal()">Saída</button>
         </div>
+        <!-- Modal para adicionar saldo -->
+                <div id="modalAdicionarSaldo" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModalAdicionarSaldo()">&times;</span>
+                        <h2>Adicionar Saldo</h2>
+                        <input type="number" id="valorAdicao" placeholder="Valor a adicionar"><br><br>
+                        <input type="text" id="motivoAdicao" placeholder="Motivo"><br><br>
+                        <button id="btnConfirmarAdicao">Confirmar</button>
+                        
+                    </div>
+                </div>
+
+                <!-- Modal para remover saldo -->
+                <div id="modalRemoverSaldo" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModalRemoverSaldo()">&times;</span>
+                        <h2>Remover Saldo</h2>
+                        <input type="number" id="valorRemocao" placeholder="Valor a remover"><br><br>
+                        <input type="text" id="motivoRemocao" placeholder="Motivo"><br><br>
+                        <button id="btnConfirmarRemocao">Confirmar</button>
+                    </div>
+                </div>
+
+        
     
         <!-- Popup -->
         <div id="popup" class="popup">

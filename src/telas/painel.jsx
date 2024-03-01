@@ -15,6 +15,7 @@ window.onload = function () {
     if (caixaAberto === "true") {
         document.getElementById("caixaFechado").style.display = "none";
         document.getElementById("frenteCaixa").style.display = "block";
+        document.getElementById("serviceContainer").style.display = "block";
         document.getElementById("saldoBloco").style.display = "block"; // Exibir bloco de saldo
 
         // Atualizar valor do saldo com o valor inicial inserido ao abrir o caixa
@@ -39,6 +40,7 @@ function closePopup() {
     document.getElementById("popup").style.display = "none";
     document.getElementById("popupFechar").style.display = "none";
 }
+
 
 
 //Salva o horario e o valor incial na maquina od usuario
@@ -328,7 +330,7 @@ function calcularTotal(servicosSelecionados) {
     // Iterar sobre os serviços selecionados e somar seus preços
     servicosSelecionados.forEach(servico => {
         // Suponha que cada serviço tenha um atributo 'preco' que represente seu custo
-        total += parseFloat(servico.preco);
+        total += (servico.preco);
     });
 
     return total;
@@ -336,18 +338,22 @@ function calcularTotal(servicosSelecionados) {
 
 
 
-f// Função para processar a escolha entre agendar ou fazer agora
 function processarEscolha() {
     const escolha = document.querySelector('input[name="escolha"]:checked').value;
 
     if (escolha === "fazerAgora") {
-        // Capturar o horário de abertura do serviço
-        const horarioAbertura = new Date().toLocaleTimeString();
+ /*       // Capturar o horário de abertura do serviço
+        const horarioAbertura = new Date().toLocaleTimeString();    
+        // Capturar o nome do cliente selecionado
+        const clienteSelecionadoElement = document.querySelector('.cliente-card.selected-card p');
+        const cliente = clienteSelecionadoElement ? clienteSelecionadoElement.innerText : "Cliente não selecionado";
 
-        // Coletar informações dos passos anteriores
-        const cliente = document.getElementById("clienteSelecionado").innerText; // Suponha que haja um elemento com ID "clienteSelecionado" que mostra o nome do cliente selecionado
-        const servicos = obterServicosSelecionados(); // Implemente a função obterServicosSelecionados() para retornar os serviços selecionados
-        const profissional = document.getElementById("profissionalSelecionado").innerText; // Suponha que haja um elemento com ID "profissionalSelecionado" que mostra o nome do profissional selecionado
+        // Capturar o nome do profissional selecionado
+        const profissionalSelecionadoElement = document.querySelector('.colaborador-card.selected-card p');
+        const profissional = profissionalSelecionadoElement ? profissionalSelecionadoElement.innerText : "Profissional não selecionado";
+
+        // Capturar informações dos passos anteriores
+        //const servicos = obterServicosSelecionados(); // Implemente a função obterServicosSelecionados() para retornar os serviços selecionados
 
         // Construir objeto com os dados da comanda
         const comanda = {
@@ -355,16 +361,18 @@ function processarEscolha() {
             servicos: servicos,
             profissional: profissional,
             status: "Em andamento", // Defina o status inicial da comanda
-            total: calcularTotal(servicos), // Implemente a função calcularTotal() para calcular o total com base nos serviços selecionados
+           // total: calcularTotal(servicos), // Implemente a função calcularTotal() para calcular o total com base nos serviços selecionados
             dataInicio: horarioAbertura // Adicione o horário de abertura do serviço à comanda
         };
 
-        // Enviar a comanda para o backend
         enviarComanda(comanda);
+        // caso nao funfe a funcao*/
+        abrirComanda();
     } else if (escolha === "agendar") {
-        // Implemente a lógica para lidar com o agendamento
+        nextStep();
     }
 }
+
 
 // Função para enviar a comanda para o backend
 function enviarComanda(comanda) {
@@ -497,3 +505,95 @@ function adicionarComandaAoContainer(comanda) {
     // Adicionar nova comanda ao container
     containerComandas.appendChild(comandaElement);
 }
+
+
+// Abrir modal para adicionar saldo
+function openAdicionarSaldoModal() {
+    document.getElementById("modalAdicionarSaldo").style.display = "block";
+}
+
+// Fechar modal para adicionar saldo
+function closeModalAdicionarSaldo() {
+    document.getElementById("modalAdicionarSaldo").style.display = "none";
+}
+
+// Abrir modal para remover saldo
+function openRemoverSaldoModal() {
+    document.getElementById("modalRemoverSaldo").style.display = "block";
+}
+
+// Fechar modal para remover saldo
+function closeModalRemoverSaldo() {
+    document.getElementById("modalRemoverSaldo").style.display = "none";
+}
+
+
+// Evento de clique para adicionar saldo
+document.getElementById("btnConfirmarAdicao").addEventListener("click", function() {
+    var valorAdicao = document.getElementById("valorAdicao").value;
+    
+    // Enviar solicitação fetch para o backend
+    fetch("http://localhost:8080/caixas/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            valor: valorAdicao,
+            adicionar: true
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Erro ao adicionar saldo");
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Atualizar o saldo na interface do usuário
+        closeModalAdicionarSaldo();
+        document.getElementById("saldoInicial").innerText = "R$" + data.saldo;
+        console.log("Saldo adicionado com sucesso!");
+        // Fechar modal de adicionar saldo
+        document.getElementById("modalAdicionarSaldo").style.display = "none";
+    })
+    .catch(error => {
+        console.error("Erro ao adicionar saldo:", error);
+        // Tratar erro, se necessário
+    });
+});
+
+// Evento de clique para remover saldo
+document.getElementById("btnConfirmarRemocao").addEventListener("click", function() {
+    var valorRemocao = document.getElementById("valorRemocao").value;
+    
+    // Enviar solicitação fetch para o backend
+    fetch("http://localhost:8080/caixas/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            saldo: valorRemocao,
+            adicionar: false
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Erro ao remover saldo");
+        }
+        return response.json();
+    })
+    .then(data => {
+        closeModalRemoverSaldo();
+        // Atualizar o saldo na interface do usuário
+        document.getElementById("saldoInicial").innerText = "R$" + data.saldo;
+        console.log("Saldo removido com sucesso!");
+        // Fechar modal de remover saldo
+        document.getElementById("modalRemoverSaldo").style.display = "none";
+    })
+    .catch(error => {
+        console.error("Erro ao remover saldo:", error);
+        // Tratar erro, se necessário
+    });
+});
