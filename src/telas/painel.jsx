@@ -287,23 +287,51 @@ document.addEventListener("DOMContentLoaded", preencherGridColaboradores);
 
 
         
-// Função para adicionar dinamicamente os serviços na terceira etapa do modal
-async function addServices() {
-    var servicosContainer = document.getElementById("servicos");
-    servicosContainer.innerHTML = "";
-    var servicos = await obterDadosDoBancoDeDados("servicos");
-    servicos.forEach(function(service) {
-        var checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        checkbox.name = "servico";
-        checkbox.value = service;
-        var label = document.createElement("label");
-        label.appendChild(document.createTextNode(service));
-        var br = document.createElement("br");
-        servicosContainer.appendChild(checkbox);
-        servicosContainer.appendChild(label);
-        servicosContainer.appendChild(br);
+function preencherServicos() {
+    fetch("http://localhost:8080/servicos/")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erro ao obter serviços: " + response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            const servicosContainer = document.getElementById("servicos");
+            servicosContainer.innerHTML = ""; // Limpar o conteúdo anterior
+
+            data.forEach(servico => {
+                const checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.id = `servico-${servico.idServico}`; // Defina um ID único para cada checkbox
+                checkbox.value = servico.nomeServico; // Valor do checkbox é o ID do serviço
+                const label = document.createElement("label");
+                label.htmlFor = `servico-${servico.idServico}`;
+                label.textContent = servico.nomeServico; // Use o nome do serviço como texto do label
+
+                servicosContainer.appendChild(checkbox);
+                servicosContainer.appendChild(label);
+                servicosContainer.appendChild(document.createElement("br")); // Adicione uma quebra de linha
+            });
+        })
+        .catch(error => {
+            console.error(error);
+        });
+}
+
+// Chame a função para preencher os serviços quando a página carregar
+document.addEventListener("DOMContentLoaded", preencherServicos);
+
+
+function calcularTotal(servicosSelecionados) {
+    let total = 0;
+
+    // Iterar sobre os serviços selecionados e somar seus preços
+    servicosSelecionados.forEach(servico => {
+        // Suponha que cada serviço tenha um atributo 'preco' que represente seu custo
+        total += parseFloat(servico.preco);
     });
+
+    return total;
 }
 
 
@@ -393,12 +421,6 @@ function processarEscolha() {
         } else {
             alert("Por favor, selecione uma data e um horário de agendamento.");
         }
-    }
-    
-    // Função para calcular o total com base nos serviços selecionados
-    function calcularTotal(servicosSelecionados) {
-        // Lógica para calcular o total com base nos serviços selecionados
-        return servicosSelecionados.length * 10; // Por exemplo, valor fixo de R$10 por serviço
     }
     
 
