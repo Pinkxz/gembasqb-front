@@ -336,14 +336,62 @@ function calcularTotal(servicosSelecionados) {
 
 
 
+f// Função para processar a escolha entre agendar ou fazer agora
 function processarEscolha() {
-    var escolha = document.querySelector('input[name="escolha"]:checked').value;
+    const escolha = document.querySelector('input[name="escolha"]:checked').value;
+
     if (escolha === "fazerAgora") {
-        abrirComanda();
+        // Capturar o horário de abertura do serviço
+        const horarioAbertura = new Date().toLocaleTimeString();
+
+        // Coletar informações dos passos anteriores
+        const cliente = document.getElementById("clienteSelecionado").innerText; // Suponha que haja um elemento com ID "clienteSelecionado" que mostra o nome do cliente selecionado
+        const servicos = obterServicosSelecionados(); // Implemente a função obterServicosSelecionados() para retornar os serviços selecionados
+        const profissional = document.getElementById("profissionalSelecionado").innerText; // Suponha que haja um elemento com ID "profissionalSelecionado" que mostra o nome do profissional selecionado
+
+        // Construir objeto com os dados da comanda
+        const comanda = {
+            cliente: cliente,
+            servicos: servicos,
+            profissional: profissional,
+            status: "Em andamento", // Defina o status inicial da comanda
+            total: calcularTotal(servicos), // Implemente a função calcularTotal() para calcular o total com base nos serviços selecionados
+            dataInicio: horarioAbertura // Adicione o horário de abertura do serviço à comanda
+        };
+
+        // Enviar a comanda para o backend
+        enviarComanda(comanda);
     } else if (escolha === "agendar") {
-        nextStep();
+        // Implemente a lógica para lidar com o agendamento
     }
 }
+
+// Função para enviar a comanda para o backend
+function enviarComanda(comanda) {
+    fetch("http://localhost:8080/comandas/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(comanda)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Erro ao enviar comanda: " + response.status);
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Lógica após o envio bem-sucedido da comanda
+        console.log("Comanda enviada com sucesso:", data);
+        // Limpar o container ou executar outras ações, se necessário
+    })
+    .catch(error => {
+        console.error(error);
+        // Lógica de tratamento de erro, se necessário
+    });
+}
+
 
     function abrirComanda(){
             // Extrair dados do cliente selecionado
