@@ -1,6 +1,6 @@
 // signup.js
 
-//verificações de cadastro
+// Verificações de cadastro
 function validateForm() {
   var name = document.getElementById('name').value;
   var email = document.getElementById('email').value;
@@ -8,16 +8,21 @@ function validateForm() {
   var confirmPassword = document.getElementById('confirm-password').value;
   var number = document.getElementById('number').value;
 
-
   // Verificação de e-mail
   if (!email.includes('@') || email.split('@')[0].length === 0) {
     alert("E-Mail inválido");
     return false;
   }
 
+  // Verificação do nome
+  if (!name.trim() || name.includes('.')) {
+    alert("O nome não pode estar vazio e não pode conter o caractere '.'");
+    return false;
+  }
+
   // Verificação de senha
-  if (password.length < 8 || !password.match(/(?=.*[A-Z])(?=.*\d)/)) {
-    alert("A senha deve conter no mínimo 8 caracteres, 1 letra maiúscula e 1 número");
+  if (password.length < 8 || !password.match(/(?=.*[A-Z])(?=.*\d)/) || password.includes('.')) {
+    alert("A senha deve conter no mínimo 8 caracteres, 1 letra maiúscula e 1 número, e não pode conter o caractere '.'");
     return false;
   }
 
@@ -28,8 +33,8 @@ function validateForm() {
   }
 
   // Verificação de número
-  if (!number.trim()) {
-    alert("Por favor, informe seu número");
+  if (!number.trim() || number.includes('.')) {
+    alert("Por favor, informe seu número sem o caractere '.'");
     return false;
   }
 
@@ -48,16 +53,15 @@ function validateStep2() {
   var numero = document.getElementById('numero').value;
   var tamanhoEmpresaSelecionado = document.getElementById('tamanhoEmpresaSelecionado').value;
 
-
   // Verificação do nome da empresa
-  if (!companyName.trim()) {
-    alert("Por favor, informe o nome da empresa");
+  if (!companyName.trim() || companyName.includes('.')) {
+    alert("Por favor, informe o nome da empresa sem o caractere '.'");
     return false;
   }
 
   // Verificação do tipo de negócio
-  if (!negocio.trim()) {
-    alert("Por favor, informe o tipo de negócio");
+  if (!negocio.trim() || negocio.includes('.')) {
+    alert("Por favor, informe o tipo de negócio sem o caractere '.'");
     return false;
   }
 
@@ -68,8 +72,8 @@ function validateStep2() {
   }
 
   // Verificação da rua
-  if (!rua.trim()) {
-    alert("Por favor, informe a rua");
+  if (!rua.trim() || rua.includes('.')) {
+    alert("Por favor, informe a rua sem o caractere '.'");
     return false;
   }
 
@@ -80,14 +84,14 @@ function validateStep2() {
   }
 
   // Verificação da cidade
-  if (!cidade.trim()) {
-    alert("Por favor, informe a cidade");
+  if (!cidade.trim() || cidade.includes('.')) {
+    alert("Por favor, informe a cidade sem o caractere '.'");
     return false;
   }
 
   // Verificação do bairro
-  if (!bairro.trim()) {
-    alert("Por favor, informe o bairro");
+  if (!bairro.trim() || bairro.includes('.')) {
+    alert("Por favor, informe o bairro sem o caractere '.'");
     return false;
   }
 
@@ -106,6 +110,7 @@ function validateStep2() {
   // Se todas as validações passarem, retorna true
   return true;
 }
+
 
 /*
 function formatPhoneNumber(input) {
