@@ -286,19 +286,20 @@ function cadastrarUsuario() {
   // Recupera os dados do formulário de cadastro de usuário
   var nome = document.getElementById('name').value;
   var telefone = document.getElementById('number').value;
-  var email = document.getElementById('email').value;
+  var login = document.getElementById('email').value;
   var senha = document.getElementById('password').value;
 
   // Monta o objeto com os dados a serem enviados
   var dados = {
     nome: nome,
     numero: telefone,
-    email: email,
-    password: senha
+    login: login,
+    password: senha,
+    "role": "ADMIN"
   };
 
   // Envia os dados para o backend via requisição HTTP POST
-  fetch('http://localhost:8080/users',{
+  fetch('http://localhost:8080/auth/register',{
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

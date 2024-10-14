@@ -42,35 +42,34 @@
   
    
     <script>
-            $(document).ready(function() {
-                $("#loginForm").submit(function(event) {
-                    event.preventDefault();
+          $(document).ready(function() {
+              $("#loginForm").submit(function(event) {
+                  event.preventDefault();
 
-                    var email = $("#username").val();
-                    var password = $("#password").val();
+                  var login = $("#username").val();
+                  var password = $("#password").val();
 
-                    var userData = {
-                        "email": email,
-                        "password": password
-                    };
+                  var userData = {
+                      "login": login, 
+                      "password": password
+                  };
 
-                    $.ajax({
-                        type: "POST",
-                        contentType: "application/json",
-                        url: "http://localhost:8080/login",
-                        data: JSON.stringify(userData),
-                        success: function(response) {
-                            // Armazenar o token JWT retornado pelo backend no localStorage
-                            localStorage.setItem('token', response.token);
-                            document.dispatchEvent(new Event('tokenReady'));
-                            window.location.href = "/src/telas/painel.html"; 
-                        },  
-                        error: function(xhr, status, error) {
-                            alert("Erro: " + xhr.responseText);
-                        }
-                    });
-                });
-            });
+                  $.ajax({
+                      type: "POST",
+                      contentType: "application/json",
+                      url: "http://localhost:8080/login",
+                      data: JSON.stringify(userData),
+                      success: function(response) {
+                          localStorage.setItem("token", response.token); // Armazena o token no localStorage
+                          alert(token)
+                          window.location.href = "/src/telas/painel.html"; 
+                      },  
+                      error: function(xhr, status, error) {
+                          alert("Erro: E-mail ou senha inválidos");
+                      }
+                  });
+              });
+          });
 
     </script>
   </body>
